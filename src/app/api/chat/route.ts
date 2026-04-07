@@ -1,11 +1,10 @@
 import OpenAI from "openai";
 import { SYSTEM_PROMPT } from "@/lib/systemPrompt";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 export async function POST(req: Request) {
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
   try {
     const { messages } = await req.json();
 
