@@ -17,7 +17,7 @@ export default function CosmicBackground() {
 
     const resize = () => {
       w = window.innerWidth;
-      h = document.documentElement.scrollHeight;
+      h = window.innerHeight;
       canvas.width = w;
       canvas.height = h;
     };
@@ -25,24 +25,24 @@ export default function CosmicBackground() {
     window.addEventListener("resize", resize);
 
     // ── Stars ──
-    const STAR_COUNT = 220;
+    const STAR_COUNT = 400;
     const stars = Array.from({ length: STAR_COUNT }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      r: Math.random() * 1.2 + 0.2,
-      opacity: Math.random() * 0.6 + 0.1,
-      twinkleSpeed: Math.random() * 0.008 + 0.002,
+      r: Math.random() * 1.8 + 0.4,
+      opacity: Math.random() * 0.7 + 0.3,
+      twinkleSpeed: Math.random() * 0.012 + 0.004,
       twinkleOffset: Math.random() * Math.PI * 2,
-      cyan: Math.random() < 0.18,
+      cyan: Math.random() < 0.25,
     }));
 
     // ── Nebula orbs ──
     const orbs = [
-      { x: w * 0.15, y: h * 0.12, r: 320, color: "rgba(0,229,255,0.022)", speed: 0.00008 },
-      { x: w * 0.82, y: h * 0.28, r: 260, color: "rgba(0,184,204,0.018)", speed: 0.00012 },
-      { x: w * 0.5,  y: h * 0.55, r: 400, color: "rgba(0,229,255,0.014)", speed: 0.00006 },
-      { x: w * 0.72, y: h * 0.75, r: 280, color: "rgba(0,100,180,0.020)", speed: 0.00010 },
-      { x: w * 0.25, y: h * 0.85, r: 220, color: "rgba(0,229,255,0.016)", speed: 0.00009 },
+      { x: w * 0.15, y: h * 0.12, r: 320, color: "rgba(0,229,255,0.07)", speed: 0.00008 },
+      { x: w * 0.82, y: h * 0.28, r: 260, color: "rgba(0,184,204,0.06)", speed: 0.00012 },
+      { x: w * 0.5,  y: h * 0.55, r: 400, color: "rgba(0,229,255,0.05)", speed: 0.00006 },
+      { x: w * 0.72, y: h * 0.75, r: 280, color: "rgba(0,100,180,0.07)", speed: 0.00010 },
+      { x: w * 0.25, y: h * 0.85, r: 220, color: "rgba(0,229,255,0.06)", speed: 0.00009 },
     ];
     let orbAngles = orbs.map(() => Math.random() * Math.PI * 2);
 
@@ -124,8 +124,8 @@ export default function CosmicBackground() {
 
         const grad = ctx.createLinearGradient(tailX, tailY, s.x, s.y);
         grad.addColorStop(0, "transparent");
-        grad.addColorStop(0.6, `rgba(0,229,255,${s.opacity * 0.3})`);
-        grad.addColorStop(1, `rgba(255,255,255,${s.opacity * 0.9})`);
+        grad.addColorStop(0.6, `rgba(0,229,255,${s.opacity * 0.6})`);
+        grad.addColorStop(1, `rgba(255,255,255,${s.opacity})`);
 
         ctx.beginPath();
         ctx.moveTo(tailX, tailY);
@@ -162,7 +162,7 @@ export default function CosmicBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-full h-full pointer-events-none z-0"
-      style={{ opacity: 0.9 }}
+      style={{ opacity: 1 }}
     />
   );
 }
