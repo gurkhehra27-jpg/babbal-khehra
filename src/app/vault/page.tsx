@@ -18,7 +18,7 @@ const books = [
     border: "border-[#00e5ff]/20",
     hoverBorder: "hover:border-[#00e5ff]/50",
     roman: "I",
-    coverImage: null as string | null, // replace with: "/images/books/alive.jpg"
+    coverImage: "/images/alive-cover.png" as string | null,
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const books = [
     border: "border-[#00b8cc]/20",
     hoverBorder: "hover:border-[#00b8cc]/50",
     roman: "II",
-    coverImage: null as string | null, // replace with: "/images/books/ego-and-enlightenment.jpg"
+    coverImage: "/images/ego-enlightenment-cover.png" as string | null,
   },
 ];
 
