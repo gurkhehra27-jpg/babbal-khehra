@@ -25,24 +25,24 @@ export default function CosmicBackground() {
     window.addEventListener("resize", resize);
 
     // ── Stars ──
-    const STAR_COUNT = 400;
+    const STAR_COUNT = 900;
     const stars = Array.from({ length: STAR_COUNT }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      r: Math.random() * 1.8 + 0.4,
-      opacity: Math.random() * 0.7 + 0.3,
-      twinkleSpeed: Math.random() * 0.012 + 0.004,
+      r: Math.random() * 2.5 + 0.8,
+      opacity: Math.random() * 0.4 + 0.6,
+      twinkleSpeed: Math.random() * 0.015 + 0.005,
       twinkleOffset: Math.random() * Math.PI * 2,
-      cyan: Math.random() < 0.25,
+      cyan: Math.random() < 0.3,
     }));
 
     // ── Nebula orbs ──
     const orbs = [
-      { x: w * 0.15, y: h * 0.12, r: 320, color: "rgba(0,229,255,0.07)", speed: 0.00008 },
-      { x: w * 0.82, y: h * 0.28, r: 260, color: "rgba(0,184,204,0.06)", speed: 0.00012 },
-      { x: w * 0.5,  y: h * 0.55, r: 400, color: "rgba(0,229,255,0.05)", speed: 0.00006 },
-      { x: w * 0.72, y: h * 0.75, r: 280, color: "rgba(0,100,180,0.07)", speed: 0.00010 },
-      { x: w * 0.25, y: h * 0.85, r: 220, color: "rgba(0,229,255,0.06)", speed: 0.00009 },
+      { x: w * 0.15, y: h * 0.12, r: 380, color: "rgba(0,229,255,0.18)", speed: 0.00008 },
+      { x: w * 0.82, y: h * 0.28, r: 300, color: "rgba(0,184,204,0.15)", speed: 0.00012 },
+      { x: w * 0.5,  y: h * 0.55, r: 450, color: "rgba(0,229,255,0.12)", speed: 0.00006 },
+      { x: w * 0.72, y: h * 0.75, r: 320, color: "rgba(0,100,180,0.16)", speed: 0.00010 },
+      { x: w * 0.25, y: h * 0.85, r: 260, color: "rgba(0,229,255,0.14)", speed: 0.00009 },
     ];
     let orbAngles = orbs.map(() => Math.random() * Math.PI * 2);
 
@@ -77,7 +77,8 @@ export default function CosmicBackground() {
     let t = 0;
 
     const draw = () => {
-      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = "rgba(0,0,0,0.85)";
+      ctx.fillRect(0, 0, w, h);
 
       // ── Nebula orbs ──
       orbs.forEach((orb, i) => {
