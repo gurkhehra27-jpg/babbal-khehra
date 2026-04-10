@@ -72,7 +72,7 @@ export default function HomePage() {
               <div className="absolute -inset-3 rounded-full bg-[#00e5ff]/8 blur-xl" />
               <div className="absolute -inset-1 border border-[#00e5ff]/20 rounded-full" />
               <PhotoSlot
-                src={null}
+                src="/images/photoformainpage.png"
                 alt="Babbal Khehra"
                 label="Your photo here"
                 variant="portrait"

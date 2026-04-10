@@ -74,7 +74,7 @@ export default function AboutPage() {
               <div className="absolute -inset-2 bg-[#00e5ff]/5 blur-xl" />
               <div className="absolute -inset-0.5 border border-[#00e5ff]/15" />
               <PhotoSlot
-                src={null}
+                src="/images/babbal.khehra main photo2.png"
                 alt="Babbal Khehra"
                 label="Your portrait here"
                 variant="portrait"
