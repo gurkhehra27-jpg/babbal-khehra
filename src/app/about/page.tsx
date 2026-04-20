@@ -9,7 +9,7 @@ const presenceMoments = [
     src: "/images/presence/community-christmas-logan.jpeg",
     imageClassName: "object-center",
     caption:
-      "At a community Christmas gathering in Logan with local leaders, elected representatives, and residents â€” reflecting the relationships, presence, and public engagement that shape real community life.",
+      "At a community Christmas gathering in Logan with local leaders, elected representatives, and residents - reflecting the relationships, presence, and public engagement that shape real community life.",
   },
   {
     src: "/images/presence/parliament-leaders.jpg",
@@ -47,20 +47,20 @@ const personalDimensions = [
 
 const milestones = [
   { year: "2018+", event: "Built a career across sales, student services, and community-facing roles" },
-  { year: "2020+", event: "Deepened community engagement in Logan â€” events, civic spaces, public life" },
-  { year: "2024", event: "Entered local politics â€” committed to genuine representation" },
-  { year: "2025", event: "Published Alive â€” debut novel" },
+  { year: "2020+", event: "Deepened community engagement in Logan - events, civic spaces, public life" },
+  { year: "2024", event: "Entered local politics - committed to genuine representation" },
+  { year: "2025", event: "Published Alive - debut novel" },
   { year: "2025", event: "Published Ego & Enlightenment" },
   { year: "2025", event: "Sharpened a voice around psychology, communication, and human connection" },
-  { year: "2025", event: "Built babbalkhehra.com â€” full-stack personal brand site" },
-  { year: "2026", event: "Quantum Seer â€” AI prediction platform in development" },
+  { year: "2025", event: "Built babbalkhehra.com - full-stack personal brand site" },
+  { year: "2026", event: "Quantum Seer - AI prediction platform in development" },
 ];
 
 const beliefs = [
   {
     num: "01",
     title: "Trust is built in person first",
-    body: "Technology amplifies presence â€” it does not replace it. The trust that matters is earned in real rooms, real conversations, and real follow-through. Digital systems scale what already exists.",
+    body: "Technology amplifies presence - it does not replace it. The trust that matters is earned in real rooms, real conversations, and real follow-through. Digital systems scale what already exists.",
   },
   {
     num: "02",
@@ -70,7 +70,7 @@ const beliefs = [
   {
     num: "03",
     title: "Proof moves faster than promise",
-    body: "Don't describe what you can do. Build it. Ship it. Show it. Credibility is earned through consistent execution â€” not announcements, not pitches, not positioning.",
+    body: "Don't describe what you can do. Build it. Ship it. Show it. Credibility is earned through consistent execution - not announcements, not pitches, not positioning.",
   },
 ];
 
@@ -78,7 +78,7 @@ export default function AboutPage() {
   return (
     <div className="bg-black min-h-screen">
 
-      {/* â”€â”€ HEADER â”€â”€ */}
+      {/* -”€-”€ HEADER -”€-”€ */}
       <section className="pt-40 pb-20 px-6 relative overflow-hidden">
         <div className="absolute top-0 right-1/3 w-[500px] h-[400px] bg-[#00e5ff]/4 blur-[120px] rounded-full pointer-events-none" />
         <div className="max-w-6xl mx-auto relative">
@@ -112,7 +112,7 @@ export default function AboutPage() {
 
       <div className="h-px bg-gradient-to-r from-transparent via-[#00e5ff]/20 to-transparent" />
 
-      {/* â”€â”€ MANIFESTO STRIP â”€â”€ */}
+      {/* -”€-”€ MANIFESTO STRIP -”€-”€ */}
       <section className="py-20 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[#07070f]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[200px] bg-[#00e5ff]/3 blur-[100px] rounded-full pointer-events-none" />
@@ -135,11 +135,11 @@ export default function AboutPage() {
 
       <div className="h-px bg-gradient-to-r from-transparent via-[#00e5ff]/10 to-transparent" />
 
-      {/* â”€â”€ BIO â€” editorial split â”€â”€ */}
+      {/* -”€-”€ BIO - editorial split -”€-”€ */}
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[300px_1fr] gap-16">
 
-          {/* Left â€” portrait + identity */}
+          {/* Left - portrait + identity */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -190,7 +190,7 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          {/* Right â€” bio */}
+          {/* Right - bio */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -225,7 +225,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* â”€â”€ PUBLIC PRESENCE â”€â”€ */}
+      {/* -”€-”€ PUBLIC PRESENCE -”€-”€ */}
       <section className="py-24 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[#07070f]" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00e5ff]/15 to-transparent" />
@@ -252,7 +252,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          {/* Curated photo grid â€” swap src values when photos are ready */}
+          {/* Curated photo grid - swap src values when photos are ready */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {presenceMoments.map((moment, i) => (
               <motion.div
@@ -273,7 +273,7 @@ export default function AboutPage() {
                       className={`object-cover ${moment.imageClassName} group-hover:scale-[1.04] transition-transform duration-700`}
                     />
                   ) : (
-                    /* Placeholder â€” replace moment.src with "/images/presence/01.jpg" etc. */
+                    /* Placeholder - replace moment.src with "/images/presence/01.jpg" etc. */
                     <div className="w-full h-full bg-[#07070f] flex flex-col items-center justify-center relative">
                       <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-[#00e5ff]/15" />
                       <div className="absolute top-3 right-3 w-5 h-5 border-t border-r border-[#00e5ff]/15" />
@@ -329,7 +329,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* â”€â”€ WHAT I STAND FOR â”€â”€ */}
+      {/* -”€-”€ WHAT I STAND FOR -”€-”€ */}
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -432,7 +432,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* â”€â”€ TIMELINE â”€â”€ */}
+      {/* -”€-”€ TIMELINE -”€-”€ */}
       <section className="py-24 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[#07070f]" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00e5ff]/15 to-transparent" />
@@ -480,7 +480,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* â”€â”€ CTA â”€â”€ */}
+      {/* -”€-”€ CTA -”€-”€ */}
       <section className="py-24 px-6 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#00e5ff]/3 blur-[100px] rounded-full pointer-events-none" />
 
@@ -499,14 +499,14 @@ export default function AboutPage() {
             <span className="text-gradient-cyan">Decide for yourself.</span>
           </h3>
           <p className="text-[#6b6b8a] text-base mb-10 leading-relaxed">
-            The Lab has the digital proof. The Vault has the writing. Either way â€” you&apos;re already here.
+            The Lab has the digital proof. The Vault has the writing. Either way - you&apos;re already here.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/lab"
               className="inline-flex items-center gap-3 px-8 py-4 border border-[#00e5ff]/40 text-[#00e5ff] text-sm tracking-[0.2em] uppercase hover:bg-[#00e5ff]/10 transition-all duration-300 glow-box-cyan"
             >
-              The Lab â†’
+              The Lab -†’
             </Link>
             <Link
               href="/vault"
