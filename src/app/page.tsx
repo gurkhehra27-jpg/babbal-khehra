@@ -17,13 +17,38 @@ export default function HomePage() {
   return (
     <div className="bg-black">
 
-      {/* ── HERO — cinematic split ── */}
+      {/* ── HERO ── */}
       <section ref={heroRef} className="relative min-h-screen overflow-hidden star-bg">
         {/* Ambient glows */}
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[600px] rounded-full bg-[#00e5ff]/4 blur-[150px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[#00e5ff]/3 blur-[100px] pointer-events-none" />
 
-        {/* Photo — bleeds in from right, film-poster style */}
+        {/* ── Mobile: full-bleed editorial poster photo ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.8, delay: 0.2, ease: "easeOut" }}
+          style={{ y: photoY }}
+          className="absolute inset-0 block md:hidden"
+        >
+          <Image
+            src="/images/photoformainpage.png"
+            alt="Babbal Khehra"
+            fill
+            className="object-cover object-top"
+            priority
+          />
+          {/* Gradient: photo visible at top, dissolves into black by 80% */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.28) 32%, rgba(0,0,0,0.68) 55%, rgba(0,0,0,0.92) 72%, #000000 84%)",
+            }}
+          />
+        </motion.div>
+
+        {/* ── Desktop: photo bleeds from right, film-poster split ── */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -39,7 +64,6 @@ export default function HomePage() {
               className="object-cover object-top"
               priority
             />
-            {/* Left gradient — photo dissolves into black */}
             <div
               className="absolute inset-0"
               style={{
@@ -47,50 +71,51 @@ export default function HomePage() {
                   "linear-gradient(to right, #000000 0%, rgba(0,0,0,0.88) 18%, rgba(0,0,0,0.35) 55%, transparent 100%)",
               }}
             />
-            {/* Bottom gradient */}
             <div className="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-black to-transparent" />
           </div>
         </motion.div>
 
-        {/* Text content — left */}
+        {/* Text — bottom-anchored on mobile, centered on desktop */}
         <motion.div
           style={{ opacity: heroOpacity, y: heroY }}
-          className="relative z-10 max-w-6xl mx-auto px-6 min-h-screen flex items-center"
+          className="relative z-10 max-w-6xl mx-auto px-6 min-h-screen flex items-start md:items-center"
         >
-          <div className="max-w-xl pt-28 pb-24">
-            {/* Headline — name */}
+          {/*
+            Mobile: pt-[50vh] pushes text into the lower half so the photo is
+            visible in the upper half — editorial poster composition.
+            Desktop: pt-28 keeps the existing vertically-centered layout.
+          */}
+          <div className="max-w-xl pt-[50vh] md:pt-28 pb-16 md:pb-24">
+
             <motion.h1
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[64px] md:text-[88px] font-light tracking-tight leading-[0.92] mb-6"
+              className="text-[72px] md:text-[88px] font-light tracking-tight leading-[0.92] mb-5 md:mb-6"
             >
               <span className="text-white block">Babbal</span>
               <span className="text-gradient-cyan glow-cyan block">Khehra</span>
             </motion.h1>
 
-            {/* Title */}
             <motion.p
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
-              className="text-[#00e5ff] text-[11px] tracking-[0.55em] uppercase font-mono mb-10 opacity-70"
+              className="text-[#00e5ff] text-[11px] tracking-[0.32em] md:tracking-[0.55em] uppercase font-mono mb-7 md:mb-10 opacity-70"
             >
               Community-Facing Digital Creator
             </motion.p>
 
-            {/* Subline */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.5 }}
-              className="text-[#6b6b8a] text-lg leading-relaxed mb-12 max-w-[420px]"
+              className="text-[#6b6b8a] text-base md:text-lg leading-relaxed mb-9 md:mb-12"
             >
               I use websites, AI, storytelling, and public-facing media to build{" "}
               <span className="text-[#e8e8f0]">visibility, trust, and opportunity.</span>
             </motion.p>
 
-            {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -114,12 +139,12 @@ export default function HomePage() {
           </div>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator — hide on mobile so it doesn't crowd the text */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-10 left-6 flex flex-col items-center gap-3"
+          className="absolute bottom-10 left-6 hidden sm:flex flex-col items-center gap-3"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}
@@ -134,14 +159,14 @@ export default function HomePage() {
       <QuoteMarquee />
 
       {/* ── WHAT I BUILD ── */}
-      <section className="py-32 px-6">
+      <section className="py-20 md:py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mb-20"
+            className="mb-12 md:mb-20"
           >
             <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono mb-4 opacity-60">
               What I Build
@@ -152,7 +177,6 @@ export default function HomePage() {
             </h2>
           </motion.div>
 
-          {/* Gap-as-border grid — architectural, no cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1a1a2e]">
             {[
               {
@@ -186,15 +210,15 @@ export default function HomePage() {
               >
                 <Link
                   href={item.href}
-                  className="group block bg-[#07070f] p-10 h-full hover:bg-[#0b0b16] transition-colors duration-500"
+                  className="group block bg-[#07070f] p-6 md:p-10 h-full hover:bg-[#0b0b16] transition-colors duration-500"
                 >
-                  <div className="text-[#00e5ff] text-[11px] font-mono tracking-[0.45em] mb-8 opacity-25">
+                  <div className="text-[#00e5ff] text-[11px] font-mono tracking-[0.45em] mb-6 md:mb-8 opacity-25">
                     {item.num}
                   </div>
-                  <h3 className="text-white text-2xl font-light tracking-tight mb-4 group-hover:text-[#00e5ff] transition-colors duration-300">
+                  <h3 className="text-white text-2xl font-light tracking-tight mb-3 md:mb-4 group-hover:text-[#00e5ff] transition-colors duration-300">
                     {item.title}
                   </h3>
-                  <p className="text-[#6b6b8a] text-sm leading-relaxed mb-10">
+                  <p className="text-[#6b6b8a] text-sm leading-relaxed mb-8 md:mb-10">
                     {item.desc}
                   </p>
                   <div className="space-y-3">
@@ -211,7 +235,7 @@ export default function HomePage() {
       </section>
 
       {/* ── MANIFESTO ── */}
-      <section className="py-32 px-6 relative overflow-hidden">
+      <section className="py-20 md:py-32 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[#07070f]" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00e5ff]/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00e5ff]/20 to-transparent" />
@@ -225,15 +249,25 @@ export default function HomePage() {
           className="relative max-w-5xl mx-auto"
         >
           <div className="flex items-start gap-10 md:gap-16">
+            {/* Desktop: vertical cyan line */}
             <div className="hidden md:block w-px h-40 bg-gradient-to-b from-[#00e5ff]/50 to-transparent flex-shrink-0 mt-1" />
+
             <div>
+              {/* Mobile: horizontal accent — gives the same editorial structure */}
+              <div className="block md:hidden w-10 h-px bg-gradient-to-r from-[#00e5ff]/60 to-transparent mb-8" />
+
               <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono mb-8 opacity-60">
                 The Mission
               </p>
-              <p className="text-white text-3xl md:text-4xl lg:text-[52px] font-light leading-[1.15] tracking-tight">
-                Brand gets attention.{" "}
-                <span className="text-[#6b6b8a]">Proof gets trust.</span>{" "}
-                I build both.
+
+              {/*
+                Split into explicit lines on mobile so each statement lands as
+                its own beat — more manifesto, less run-on paragraph.
+              */}
+              <p className="text-white text-[30px] md:text-4xl lg:text-[52px] font-light leading-[1.18] tracking-tight">
+                <span className="block">Brand gets attention.</span>
+                <span className="text-[#6b6b8a] block">Proof gets trust.</span>
+                <span className="block">I build both.</span>
               </p>
             </div>
           </div>
@@ -241,14 +275,14 @@ export default function HomePage() {
       </section>
 
       {/* ── PROOF OF WORK ── */}
-      <section className="py-32 px-6">
+      <section className="py-20 md:py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex items-end justify-between mb-16"
+            className="flex items-end justify-between mb-10 md:mb-16"
           >
             <div>
               <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono mb-4 opacity-60">
@@ -267,7 +301,7 @@ export default function HomePage() {
             </Link>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             {[
               {
                 label: "Digital",
@@ -296,9 +330,9 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.7 }}
-                className="group flex gap-6 p-8 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/20 transition-colors duration-500"
+                className="group flex gap-4 md:gap-6 p-5 md:p-8 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/20 transition-colors duration-500"
               >
-                <div className="text-[#00e5ff] text-[11px] font-mono tracking-[0.35em] uppercase opacity-35 flex-shrink-0 pt-0.5 w-20">
+                <div className="text-[#00e5ff] text-[11px] font-mono tracking-[0.35em] uppercase opacity-35 flex-shrink-0 pt-0.5 w-16 md:w-20">
                   {item.label}
                 </div>
                 <div className="flex-1">
@@ -326,8 +360,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── BOOKS — secondary, clean ── */}
-      <section className="py-24 px-6">
+      {/* ── BOOKS ── */}
+      <section className="py-16 md:py-24 px-6">
         <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1a1a2e] to-transparent" />
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -335,7 +369,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex items-start justify-between mb-12"
+            className="flex items-start justify-between mb-10 md:mb-12"
           >
             <div>
               <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono mb-3 opacity-60">
@@ -354,7 +388,7 @@ export default function HomePage() {
             </Link>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             {[
               {
                 title: "Alive",
@@ -376,7 +410,7 @@ export default function HomePage() {
               >
                 <Link
                   href="/vault"
-                  className="group flex items-center gap-6 p-8 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/30 transition-all duration-500"
+                  className="group flex items-center gap-6 p-6 md:p-8 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/30 transition-all duration-500"
                 >
                   <div className="w-1.5 h-14 bg-[#00e5ff]/20 group-hover:bg-[#00e5ff]/50 transition-colors duration-300 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
@@ -399,14 +433,14 @@ export default function HomePage() {
       </section>
 
       {/* ── BLOG TEASER ── */}
-      <section className="py-24 px-6">
+      <section className="py-16 md:py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col md:flex-row items-start justify-between gap-6 mb-12"
+            className="flex flex-col md:flex-row items-start justify-between gap-4 mb-8 md:mb-12"
           >
             <div>
               <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono mb-3 opacity-60">
@@ -424,7 +458,7 @@ export default function HomePage() {
             </Link>
           </motion.div>
 
-          <div className="space-y-3">
+          <div className="space-y-2 md:space-y-3">
             {posts.slice(0, 3).map((post, i) => (
               <motion.div
                 key={post.slug}
@@ -435,20 +469,23 @@ export default function HomePage() {
               >
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group flex items-start justify-between gap-6 p-6 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/30 transition-all duration-300"
+                  className="group flex items-start justify-between gap-4 md:gap-6 p-5 md:p-6 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/30 transition-all duration-300"
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-1.5">
                       <span className="text-[#00e5ff] text-[11px] font-mono tracking-widest opacity-60">
                         {post.category}
                       </span>
-                      <span className="text-[#1a1a2e]">·</span>
-                      <span className="text-[#6b6b8a] text-[11px] font-mono">{post.date}</span>
+                      {/* Date hidden on mobile — reduces noise in a tight row */}
+                      <span className="hidden sm:inline text-[#1a1a2e]">·</span>
+                      <span className="hidden sm:inline text-[#6b6b8a] text-[11px] font-mono">{post.date}</span>
                     </div>
-                    <h3 className="text-white text-lg font-light group-hover:text-[#00e5ff] transition-colors duration-300 truncate">
+                    {/* line-clamp-2 instead of truncate — titles read properly on narrow screens */}
+                    <h3 className="text-white text-base md:text-lg font-light group-hover:text-[#00e5ff] transition-colors duration-300 leading-snug line-clamp-2">
                       {post.title}
                     </h3>
-                    <p className="text-[#6b6b8a] text-sm mt-0.5 line-clamp-1">{post.excerpt}</p>
+                    {/* Excerpt hidden on mobile — too much at small size */}
+                    <p className="hidden sm:block text-[#6b6b8a] text-sm mt-1 line-clamp-1">{post.excerpt}</p>
                   </div>
                   <span className="text-[#6b6b8a] group-hover:text-[#00e5ff] group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 mt-1">
                     →
