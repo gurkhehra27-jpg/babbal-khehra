@@ -23,7 +23,7 @@ export default function HomePage() {
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[600px] rounded-full bg-[#00e5ff]/4 blur-[150px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[#00e5ff]/3 blur-[100px] pointer-events-none" />
 
-        {/* ── Mobile: full-bleed editorial poster photo ── */}
+        {/* ── Mobile: full-bleed editorial poster ── */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -38,23 +38,21 @@ export default function HomePage() {
             className="object-cover object-top"
             priority
           />
-          {/* Gradient: photo visible at top, dissolves into black by 80% */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.28) 32%, rgba(0,0,0,0.68) 55%, rgba(0,0,0,0.92) 72%, #000000 84%)",
-            }}
-          />
+          {/* Bottom dissolve — text area is pure black */}
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.22) 28%, rgba(0,0,0,0.62) 50%, rgba(0,0,0,0.90) 68%, #000000 82%)" }} />
+          {/* Left + right edge vignette */}
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.45) 0%, transparent 18%, transparent 82%, rgba(0,0,0,0.45) 100%)" }} />
+          {/* Top darkening — merges with nav */}
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 22%)" }} />
         </motion.div>
 
-        {/* ── Desktop: photo bleeds from right, film-poster split ── */}
+        {/* ── Desktop: portrait dissolves into the composition ── */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.6, delay: 0.5, ease: "easeOut" }}
           style={{ y: photoY }}
-          className="absolute inset-y-0 right-0 w-[55%] md:w-[48%] hidden md:block"
+          className="absolute inset-y-0 right-0 w-[62%] hidden md:block"
         >
           <div className="relative w-full h-full">
             <Image
@@ -64,14 +62,16 @@ export default function HomePage() {
               className="object-cover object-top"
               priority
             />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to right, #000000 0%, rgba(0,0,0,0.88) 18%, rgba(0,0,0,0.35) 55%, transparent 100%)",
-              }}
-            />
-            <div className="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-black to-transparent" />
+            {/* Global dimming — embeds the photo into the atmosphere */}
+            <div className="absolute inset-0 bg-black/20" />
+            {/* Left dissolve — wide and gradual so there is no visible seam */}
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #000000 0%, #000000 4%, rgba(0,0,0,0.96) 14%, rgba(0,0,0,0.80) 28%, rgba(0,0,0,0.45) 46%, rgba(0,0,0,0.15) 64%, transparent 82%)" }} />
+            {/* Top dissolve — merges portrait into the ceiling */}
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 22%, transparent 48%)" }} />
+            {/* Bottom dissolve */}
+            <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black via-black/60 to-transparent" />
+            {/* Right edge — stops the portrait from cutting off sharply */}
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 10%, transparent 22%)" }} />
           </div>
         </motion.div>
 
