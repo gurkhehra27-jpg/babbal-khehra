@@ -3,207 +3,205 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRef } from "react";
+import Image from "next/image";
 import { posts } from "@/data/posts";
 import QuoteMarquee from "@/components/QuoteMarquee";
-import FeaturedQuotes from "@/components/FeaturedQuotes";
-import PhotoSlot from "@/components/PhotoSlot";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.15, duration: 0.9, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-  }),
-};
-
-const pillars = [
-  {
-    title: "The Vault",
-    description: "Two books that challenge the soul — Alive and Ego & Enlightenment.",
-    href: "/vault",
-    icon: "◈",
-  },
-  {
-    title: "The Lab",
-    description: "AI films and music that push the edge of art and consciousness.",
-    href: "/lab",
-    icon: "◎",
-  },
-  {
-    title: "Blueprint Theory",
-    description: "A philosophy of self-architecture — building meaning from the inside out.",
-    href: "/about",
-    icon: "◇",
-  },
-];
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const photoY = useTransform(scrollYProgress, [0, 1], [0, -40]);
 
   return (
     <div className="bg-black">
-      {/* ── HERO ── */}
-      <section
-        ref={heroRef}
-        className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden star-bg"
-      >
-        {/* Ambient glow orbs */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[#00e5ff]/5 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-[#00e5ff]/3 blur-[100px] pointer-events-none" />
 
+      {/* ── HERO — cinematic split ── */}
+      <section ref={heroRef} className="relative min-h-screen overflow-hidden star-bg">
+        {/* Ambient glows */}
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[600px] rounded-full bg-[#00e5ff]/4 blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[#00e5ff]/3 blur-[100px] pointer-events-none" />
+
+        {/* Photo — bleeds in from right, film-poster style */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.6, delay: 0.5, ease: "easeOut" }}
+          style={{ y: photoY }}
+          className="absolute inset-y-0 right-0 w-[55%] md:w-[48%] hidden md:block"
+        >
+          <div className="relative w-full h-full">
+            <Image
+              src="/images/photoformainpage.png"
+              alt="Babbal Khehra"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+            {/* Left gradient — photo dissolves into black */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to right, #000000 0%, rgba(0,0,0,0.88) 18%, rgba(0,0,0,0.35) 55%, transparent 100%)",
+              }}
+            />
+            {/* Bottom gradient */}
+            <div className="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-black to-transparent" />
+          </div>
+        </motion.div>
+
+        {/* Text content — left */}
         <motion.div
           style={{ opacity: heroOpacity, y: heroY }}
-          className="relative z-10 max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16"
+          className="relative z-10 max-w-6xl mx-auto px-6 min-h-screen flex items-center"
         >
-          {/* Author photo */}
-          <motion.div
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="flex-shrink-0"
-          >
-            <div className="relative">
-              {/* Glow ring */}
-              <div className="absolute -inset-3 rounded-full bg-[#00e5ff]/8 blur-xl" />
-              <div className="absolute -inset-1 border border-[#00e5ff]/20 rounded-full" />
-              <PhotoSlot
-                src="/images/photoformainpage.png"
-                alt="Babbal Khehra"
-                label="Your photo here"
-                variant="portrait"
-                className="w-52 h-64 md:w-64 md:h-80 rounded-none"
-              />
-            </div>
-          </motion.div>
-
-          {/* Text — left aligned when beside photo */}
-          <div className="text-center md:text-left">
-          {/* Eyebrow */}
-          <motion.p
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="text-[#00e5ff] text-xs tracking-[0.5em] uppercase font-mono mb-8 opacity-80"
-          >
-            Est. 2025 · Blueprint Theory
-          </motion.p>
-
-          {/* Main headline */}
-          <motion.h1
-            custom={1}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="text-5xl md:text-8xl font-light tracking-tight leading-none mb-6"
-          >
-            <span className="text-white block">Author.</span>
-            <span className="text-white block">Philosopher.</span>
-            <span className="text-gradient-cyan block glow-cyan">Visionary.</span>
-          </motion.h1>
-
-          {/* Sub-headline */}
-          <motion.p
-            custom={2}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="text-[#6b6b8a] text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mt-8 mb-12"
-          >
-            Two books that redefine consciousness.{" "}
-            <span className="text-[#e8e8f0]">Alive</span> and{" "}
-            <span className="text-[#e8e8f0]">Ego & Enlightenment</span> — and a theory
-            that asks you to architect your own existence.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            custom={3}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link
-              href="/vault"
-              className="group relative inline-flex items-center gap-3 px-8 py-4 border border-[#00e5ff]/40 text-[#00e5ff] text-sm tracking-[0.2em] uppercase hover:bg-[#00e5ff]/10 transition-all duration-300 glow-box-cyan"
+          <div className="max-w-xl pt-28 pb-24">
+            {/* Headline — name */}
+            <motion.h1
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[64px] md:text-[88px] font-light tracking-tight leading-[0.92] mb-6"
             >
-              Explore the Vault
-              <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-            </Link>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-3 px-8 py-4 text-[#6b6b8a] text-sm tracking-[0.2em] uppercase hover:text-white transition-colors duration-300"
-            >
-              My Story
-            </Link>
-          </motion.div>
+              <span className="text-white block">Babbal</span>
+              <span className="text-gradient-cyan glow-cyan block">Khehra</span>
+            </motion.h1>
 
-          {/* Scroll indicator */}
-          <motion.div
-            custom={5}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          >
-            <span className="text-[#6b6b8a] text-xs tracking-[0.3em] uppercase font-mono">Scroll</span>
+            {/* Title */}
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="text-[#00e5ff] text-[11px] tracking-[0.55em] uppercase font-mono mb-10 opacity-70"
+            >
+              Community-Facing Digital Creator
+            </motion.p>
+
+            {/* Subline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.5 }}
+              className="text-[#6b6b8a] text-lg leading-relaxed mb-12 max-w-[420px]"
+            >
+              I use websites, AI, storytelling, and public-facing media to build{" "}
+              <span className="text-[#e8e8f0]">visibility, trust, and opportunity.</span>
+            </motion.p>
+
+            {/* CTAs */}
             <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="w-px h-10 bg-gradient-to-b from-[#00e5ff]/40 to-transparent"
-            />
-          </motion.div>
-          </div>{/* end text div */}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.6 }}
+              className="flex flex-col sm:flex-row items-start gap-4"
+            >
+              <Link
+                href="/lab"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 border border-[#00e5ff]/40 text-[#00e5ff] text-sm tracking-[0.2em] uppercase hover:bg-[#00e5ff]/10 transition-all duration-300 glow-box-cyan"
+              >
+                See the Work
+                <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-3 px-8 py-4 text-[#6b6b8a] text-sm tracking-[0.2em] uppercase hover:text-white transition-colors duration-300"
+              >
+                My Story
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-10 left-6 flex flex-col items-center gap-3"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+            className="w-px h-12 bg-gradient-to-b from-[#00e5ff]/40 to-transparent"
+          />
+          <span className="text-[#6b6b8a] text-[10px] tracking-[0.4em] uppercase font-mono">Scroll</span>
         </motion.div>
       </section>
 
       {/* ── MARQUEE ── */}
       <QuoteMarquee />
 
-      {/* ── PILLARS ── */}
+      {/* ── WHAT I BUILD ── */}
       <section className="py-32 px-6">
         <div className="max-w-6xl mx-auto">
-          {/* Section label */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-[#00e5ff] text-xs tracking-[0.5em] uppercase font-mono text-center mb-16 opacity-60"
+            className="mb-20"
           >
-            The Universe of Babbal Khehra
-          </motion.p>
+            <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono mb-4 opacity-60">
+              What I Build
+            </p>
+            <h2 className="text-white text-4xl md:text-5xl font-light tracking-tight">
+              Three disciplines.<br />
+              <span className="text-gradient-cyan">One direction.</span>
+            </h2>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {pillars.map((pillar, i) => (
+          {/* Gap-as-border grid — architectural, no cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1a1a2e]">
+            {[
+              {
+                num: "01",
+                title: "Digital Systems",
+                desc: "Websites, AI tools, and content infrastructure that generate visibility and build lasting online presence.",
+                href: "/lab",
+                tag: "Websites · AI · Workflow",
+              },
+              {
+                num: "02",
+                title: "Storytelling",
+                desc: "Books, essays, and editorial content that frames ideas with clarity, conviction, and staying power.",
+                href: "/vault",
+                tag: "Books · Essays · Narrative",
+              },
+              {
+                num: "03",
+                title: "Community Presence",
+                desc: "Engagement across community, civic, and leadership spaces — building the kind of trust and visibility that creates real opportunity.",
+                href: "/about",
+                tag: "Public Work · Credibility",
+              },
+            ].map((item, i) => (
               <motion.div
-                key={pillar.title}
-                initial={{ opacity: 0, y: 60 }}
+                key={item.num}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: i * 0.1, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link
-                  href={pillar.href}
-                  className="group block p-8 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/30 hover:bg-[#07070f]/80 transition-all duration-500 glow-box-cyan-hover"
+                  href={item.href}
+                  className="group block bg-[#07070f] p-10 h-full hover:bg-[#0b0b16] transition-colors duration-500"
                 >
-                  <div className="text-[#00e5ff] text-3xl mb-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                    {pillar.icon}
+                  <div className="text-[#00e5ff] text-[11px] font-mono tracking-[0.45em] mb-8 opacity-25">
+                    {item.num}
                   </div>
-                  <h3 className="text-white text-xl font-light tracking-widest uppercase mb-3">
-                    {pillar.title}
+                  <h3 className="text-white text-2xl font-light tracking-tight mb-4 group-hover:text-[#00e5ff] transition-colors duration-300">
+                    {item.title}
                   </h3>
-                  <p className="text-[#6b6b8a] text-sm leading-relaxed">
-                    {pillar.description}
+                  <p className="text-[#6b6b8a] text-sm leading-relaxed mb-10">
+                    {item.desc}
                   </p>
-                  <div className="mt-6 flex items-center gap-2 text-[#00e5ff] text-xs tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Enter <span>→</span>
+                  <div className="space-y-3">
+                    <p className="text-[#00e5ff]/25 text-[11px] font-mono tracking-[0.2em]">{item.tag}</p>
+                    <div className="flex items-center gap-2 text-[#00e5ff] text-xs tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      Explore <span>→</span>
+                    </div>
                   </div>
                 </Link>
               </motion.div>
@@ -212,155 +210,245 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FEATURED QUOTES ── */}
-      <FeaturedQuotes />
-
-      {/* ── QUOTE / PHILOSOPHY ── */}
+      {/* ── MANIFESTO ── */}
       <section className="py-32 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[#07070f]" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00e5ff]/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00e5ff]/20 to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-[#00e5ff]/3 blur-[100px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] rounded-full bg-[#00e5ff]/3 blur-[130px] pointer-events-none" />
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative max-w-3xl mx-auto text-center"
+          className="relative max-w-5xl mx-auto"
         >
-          <span className="text-[#00e5ff]/30 text-7xl font-serif leading-none">&ldquo;</span>
-          <p className="text-white text-2xl md:text-3xl font-light leading-relaxed -mt-6">
-            The blueprint is not a plan. It is the act of{" "}
-            <span className="text-gradient-cyan">becoming aware</span> that you are the architect.
-          </p>
-          <p className="mt-6 text-[#6b6b8a] text-sm tracking-[0.3em] uppercase font-mono">
-            — Blueprint Theory
-          </p>
+          <div className="flex items-start gap-10 md:gap-16">
+            <div className="hidden md:block w-px h-40 bg-gradient-to-b from-[#00e5ff]/50 to-transparent flex-shrink-0 mt-1" />
+            <div>
+              <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono mb-8 opacity-60">
+                The Mission
+              </p>
+              <p className="text-white text-3xl md:text-4xl lg:text-[52px] font-light leading-[1.15] tracking-tight">
+                Brand gets attention.{" "}
+                <span className="text-[#6b6b8a]">Proof gets trust.</span>{" "}
+                I build both.
+              </p>
+            </div>
+          </div>
         </motion.div>
       </section>
 
-      {/* ── BOOKS PREVIEW ── */}
+      {/* ── PROOF OF WORK ── */}
       <section className="py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col md:flex-row items-start justify-between gap-6 mb-16"
+            className="flex items-end justify-between mb-16"
           >
             <div>
-              <p className="text-[#00e5ff] text-xs tracking-[0.5em] uppercase font-mono mb-3 opacity-60">
-                The Work
+              <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono mb-4 opacity-60">
+                Proof of Work
               </p>
               <h2 className="text-white text-4xl md:text-5xl font-light tracking-tight">
+                Real work.<br />
+                <span className="text-gradient-cyan">Real results.</span>
+              </h2>
+            </div>
+            <Link
+              href="/lab"
+              className="hidden md:inline-flex items-center gap-2 text-[#00e5ff] text-sm tracking-[0.2em] uppercase border-b border-[#00e5ff]/30 hover:border-[#00e5ff] pb-1 transition-colors duration-300"
+            >
+              Full portfolio →
+            </Link>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              {
+                label: "Digital",
+                title: "Full-stack websites built with Next.js, AI, and design systems",
+                detail: "Including this site — designed, built, and deployed from scratch, end to end.",
+              },
+              {
+                label: "AI",
+                title: "AI-assisted content systems and editorial workflows",
+                detail: "Using Claude to build scalable storytelling and content infrastructure.",
+              },
+              {
+                label: "Community",
+                title: "Community engagement, civic leadership, and public-facing presence",
+                detail: "Showing up where people, policy, and opportunity meet — and building systems around it.",
+              },
+              {
+                label: "Published",
+                title: "Two books written, published, and in market",
+                detail: "Alive and Ego & Enlightenment — philosophy that moves people.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.7 }}
+                className="group flex gap-6 p-8 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/20 transition-colors duration-500"
+              >
+                <div className="text-[#00e5ff] text-[11px] font-mono tracking-[0.35em] uppercase opacity-35 flex-shrink-0 pt-0.5 w-20">
+                  {item.label}
+                </div>
+                <div className="flex-1">
+                  <p className="text-white text-base font-light leading-snug mb-2">{item.title}</p>
+                  <p className="text-[#6b6b8a] text-sm leading-relaxed">{item.detail}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="mt-6 md:hidden"
+          >
+            <Link
+              href="/lab"
+              className="inline-flex items-center gap-2 text-[#00e5ff] text-sm tracking-[0.2em] uppercase border-b border-[#00e5ff]/30 hover:border-[#00e5ff] pb-1 transition-colors duration-300"
+            >
+              Full portfolio →
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── BOOKS — secondary, clean ── */}
+      <section className="py-24 px-6">
+        <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1a1a2e] to-transparent" />
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex items-start justify-between mb-12"
+          >
+            <div>
+              <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono mb-3 opacity-60">
+                Published Work
+              </p>
+              <h2 className="text-white text-3xl md:text-4xl font-light tracking-tight">
                 Two books.<br />
                 <span className="text-gradient-cyan">One truth.</span>
               </h2>
             </div>
             <Link
               href="/vault"
-              className="self-end md:self-start text-[#00e5ff] text-sm tracking-[0.2em] uppercase border-b border-[#00e5ff]/30 hover:border-[#00e5ff] pb-1 transition-colors duration-300"
+              className="self-start text-[#00e5ff] text-sm tracking-[0.2em] uppercase border-b border-[#00e5ff]/30 hover:border-[#00e5ff] pb-1 transition-colors duration-300"
             >
               View all →
             </Link>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               {
                 title: "Alive",
                 subtitle: "A story of survival and awakening",
                 tag: "Fiction · Philosophy",
-                color: "from-[#00e5ff]/10",
               },
               {
                 title: "Ego & Enlightenment",
                 subtitle: "The architecture of the self",
                 tag: "Philosophy · Self-Discovery",
-                color: "from-[#00b8cc]/10",
               },
             ].map((book, i) => (
               <motion.div
                 key={book.title}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: i * 0.15, duration: 0.7 }}
               >
                 <Link
                   href="/vault"
-                  className={`group block relative p-10 border border-[#1a1a2e] bg-gradient-to-br ${book.color} to-[#07070f] hover:border-[#00e5ff]/40 transition-all duration-500 overflow-hidden`}
+                  className="group flex items-center gap-6 p-8 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/30 transition-all duration-500"
                 >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#00e5ff]/5 rounded-full blur-2xl group-hover:bg-[#00e5ff]/10 transition-all duration-500" />
-                  <p className="text-[#00e5ff] text-xs tracking-[0.3em] uppercase font-mono mb-4 opacity-60">
-                    {book.tag}
-                  </p>
-                  <h3 className="text-white text-3xl font-light tracking-tight mb-2">
-                    {book.title}
-                  </h3>
-                  <p className="text-[#6b6b8a] text-sm">{book.subtitle}</p>
-                  <div className="mt-8 flex items-center gap-2 text-[#00e5ff] text-xs tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                    Read more →
+                  <div className="w-1.5 h-14 bg-[#00e5ff]/20 group-hover:bg-[#00e5ff]/50 transition-colors duration-300 flex-shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[#00e5ff] text-[11px] tracking-[0.3em] uppercase font-mono mb-1.5 opacity-50">
+                      {book.tag}
+                    </p>
+                    <h3 className="text-white text-xl font-light tracking-tight group-hover:text-[#00e5ff] transition-colors duration-300">
+                      {book.title}
+                    </h3>
+                    <p className="text-[#6b6b8a] text-sm mt-0.5">{book.subtitle}</p>
                   </div>
+                  <span className="text-[#6b6b8a] group-hover:text-[#00e5ff] group-hover:translate-x-1 transition-all duration-300 flex-shrink-0">
+                    →
+                  </span>
                 </Link>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
       {/* ── BLOG TEASER ── */}
-      <section className="py-32 px-6">
+      <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col md:flex-row items-start justify-between gap-6 mb-16"
+            className="flex flex-col md:flex-row items-start justify-between gap-6 mb-12"
           >
             <div>
-              <p className="text-[#00e5ff] text-xs tracking-[0.5em] uppercase font-mono mb-3 opacity-60">
+              <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono mb-3 opacity-60">
                 Thought Space
               </p>
-              <h2 className="text-white text-4xl md:text-5xl font-light tracking-tight">
+              <h2 className="text-white text-3xl md:text-4xl font-light tracking-tight">
                 Latest Essays
               </h2>
             </div>
             <Link
               href="/blog"
-              className="self-end md:self-start text-[#00e5ff] text-sm tracking-[0.2em] uppercase border-b border-[#00e5ff]/30 hover:border-[#00e5ff] pb-1 transition-colors duration-300"
+              className="self-start text-[#00e5ff] text-sm tracking-[0.2em] uppercase border-b border-[#00e5ff]/30 hover:border-[#00e5ff] pb-1 transition-colors duration-300"
             >
               All essays →
             </Link>
           </motion.div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {posts.slice(0, 3).map((post, i) => (
               <motion.div
                 key={post.slug}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.7 }}
               >
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group flex items-start justify-between gap-6 p-6 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/30 transition-all duration-400"
+                  className="group flex items-start justify-between gap-6 p-6 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/30 transition-all duration-300"
                 >
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-[#00e5ff] text-xs font-mono tracking-widest opacity-60">
+                    <div className="flex items-center gap-3 mb-1.5">
+                      <span className="text-[#00e5ff] text-[11px] font-mono tracking-widest opacity-60">
                         {post.category}
                       </span>
-                      <span className="text-[#1a1a2e] text-xs">·</span>
-                      <span className="text-[#6b6b8a] text-xs font-mono">{post.date}</span>
+                      <span className="text-[#1a1a2e]">·</span>
+                      <span className="text-[#6b6b8a] text-[11px] font-mono">{post.date}</span>
                     </div>
                     <h3 className="text-white text-lg font-light group-hover:text-[#00e5ff] transition-colors duration-300 truncate">
                       {post.title}
                     </h3>
-                    <p className="text-[#6b6b8a] text-sm mt-1 line-clamp-1">{post.excerpt}</p>
+                    <p className="text-[#6b6b8a] text-sm mt-0.5 line-clamp-1">{post.excerpt}</p>
                   </div>
                   <span className="text-[#6b6b8a] group-hover:text-[#00e5ff] group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 mt-1">
                     →

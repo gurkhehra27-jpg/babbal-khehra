@@ -24,129 +24,99 @@ export default function CosmicBackground() {
     resize();
     window.addEventListener("resize", resize);
 
-    // ── Stars ──
-    const STAR_COUNT = 900;
+    // ── Stars — sparse, fine, restrained ──
+    // 180 stars max. Tiny (0.2-1.1px). Dim (skewed toward very faint).
+    // 15% tinted cyan, 85% cold blue-white. Very slow twinkle.
+    const STAR_COUNT = 180;
     const stars = Array.from({ length: STAR_COUNT }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      r: Math.random() * 2.5 + 0.8,
-      opacity: Math.random() * 0.4 + 0.6,
-      twinkleSpeed: Math.random() * 0.015 + 0.005,
+      r: Math.random() * 0.9 + 0.2,
+      // Power distribution: most stars very dim, a few slightly brighter
+      baseOpacity: Math.pow(Math.random(), 2.2) * 0.38 + 0.04,
+      twinkleSpeed: Math.random() * 0.005 + 0.0015,
       twinkleOffset: Math.random() * Math.PI * 2,
-      cyan: Math.random() < 0.3,
+      isCyan: Math.random() < 0.14,
     }));
 
-    // ── Nebula orbs ──
-    const orbs = [
-      { x: w * 0.15, y: h * 0.12, r: 380, color: "rgba(0,229,255,0.18)", speed: 0.00008 },
-      { x: w * 0.82, y: h * 0.28, r: 300, color: "rgba(0,184,204,0.15)", speed: 0.00012 },
-      { x: w * 0.5,  y: h * 0.55, r: 450, color: "rgba(0,229,255,0.12)", speed: 0.00006 },
-      { x: w * 0.72, y: h * 0.75, r: 320, color: "rgba(0,100,180,0.16)", speed: 0.00010 },
-      { x: w * 0.25, y: h * 0.85, r: 260, color: "rgba(0,229,255,0.14)", speed: 0.00009 },
+    // ── Atmospheric glow pools — bleed in from screen edges ──
+    // Positioned off-screen so glow "leaks" into the frame from corners/edges.
+    // Very low alpha. Breathe at different phases (120° offset = 2.094 rad).
+    // rgb strings, base alpha, radius relative to viewport.
+    const buildGlows = () => [
+      {
+        // Primary: bottom-left corner, warm cyan
+        x: w * -0.08,
+        y: h * 1.1,
+        r: Math.max(w, h) * 1.05,
+        rgb: "0,218,242",
+        baseAlpha: 0.052,
+        phase: 0,
+      },
+      {
+        // Secondary: top-right corner, cooler teal
+        x: w * 1.08,
+        y: h * -0.06,
+        r: Math.max(w, h) * 0.88,
+        rgb: "0,190,212",
+        baseAlpha: 0.038,
+        phase: 2.094,
+      },
+      {
+        // Tertiary: bottom-center, deep undertone
+        x: w * 0.5,
+        y: h * 1.15,
+        r: Math.max(w, h) * 1.2,
+        rgb: "0,148,195",
+        baseAlpha: 0.026,
+        phase: 4.189,
+      },
     ];
-    let orbAngles = orbs.map(() => Math.random() * Math.PI * 2);
 
-    // ── Shooting stars ──
-    type Shooter = {
-      x: number; y: number; len: number;
-      speed: number; angle: number; opacity: number;
-      life: number; maxLife: number; active: boolean;
+    let glows = buildGlows();
+
+    // Rebuild glow positions on resize so they stay correctly edge-anchored
+    const onResize = () => {
+      resize();
+      glows = buildGlows();
     };
-    const shooters: Shooter[] = Array.from({ length: 6 }, () => ({
-      x: 0, y: 0, len: 0, speed: 0, angle: 0,
-      opacity: 0, life: 0, maxLife: 0, active: false,
-    }));
-
-    const spawnShooter = (s: Shooter) => {
-      s.x = Math.random() * w;
-      s.y = Math.random() * h * 0.5;
-      s.len = Math.random() * 120 + 60;
-      s.speed = Math.random() * 6 + 4;
-      s.angle = (Math.random() * 20 + 20) * (Math.PI / 180);
-      s.opacity = 0;
-      s.maxLife = Math.random() * 60 + 40;
-      s.life = 0;
-      s.active = true;
-    };
-
-    // Stagger initial spawns
-    shooters.forEach((s, i) => {
-      setTimeout(() => spawnShooter(s), i * 3000 + Math.random() * 4000);
-    });
+    window.removeEventListener("resize", resize);
+    window.addEventListener("resize", onResize);
 
     let t = 0;
 
     const draw = () => {
-      ctx.fillStyle = "rgba(0,0,0,0.85)";
+      // Crisp full-black base — no alpha accumulation, no trails
+      ctx.fillStyle = "#000000";
       ctx.fillRect(0, 0, w, h);
 
-      // ── Nebula orbs ──
-      orbs.forEach((orb, i) => {
-        orbAngles[i] += orb.speed;
-        const ox = orb.x + Math.sin(orbAngles[i]) * 60;
-        const oy = orb.y + Math.cos(orbAngles[i] * 0.7) * 40;
-        const grad = ctx.createRadialGradient(ox, oy, 0, ox, oy, orb.r);
-        grad.addColorStop(0, orb.color);
-        grad.addColorStop(1, "transparent");
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(ox, oy, orb.r, 0, Math.PI * 2);
-        ctx.fill();
+      // ── Atmospheric glow pools ──
+      glows.forEach((g) => {
+        // Breathe: 0.72–1.0 amplitude, very slow (full cycle ≈ 4+ minutes)
+        const breathe = 0.72 + 0.28 * Math.sin(t * 0.00032 + g.phase);
+        const alpha = g.baseAlpha * breathe;
+
+        const gr = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, g.r);
+        gr.addColorStop(0,    `rgba(${g.rgb}, ${alpha})`);
+        gr.addColorStop(0.42, `rgba(${g.rgb}, ${(alpha * 0.32).toFixed(4)})`);
+        gr.addColorStop(1,    `rgba(${g.rgb}, 0)`);
+
+        ctx.fillStyle = gr;
+        ctx.fillRect(0, 0, w, h);
       });
 
       // ── Stars ──
       stars.forEach((star) => {
-        const twinkle = Math.sin(t * star.twinkleSpeed * 60 + star.twinkleOffset);
-        const alpha = star.opacity * (0.7 + 0.3 * twinkle);
+        const tw = 0.84 + 0.16 * Math.sin(t * star.twinkleSpeed + star.twinkleOffset);
+        ctx.globalAlpha = star.baseOpacity * tw;
+        // Slightly desaturated tones — more editorial, less "space game"
+        ctx.fillStyle = star.isCyan ? "#a2e6f0" : "#d2e4ec";
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-        ctx.fillStyle = star.cyan
-          ? `rgba(0,229,255,${alpha})`
-          : `rgba(255,255,255,${alpha})`;
         ctx.fill();
       });
 
-      // ── Shooting stars ──
-      shooters.forEach((s) => {
-        if (!s.active) return;
-        s.life++;
-        const progress = s.life / s.maxLife;
-        s.opacity = progress < 0.2
-          ? progress / 0.2
-          : progress > 0.7
-          ? 1 - (progress - 0.7) / 0.3
-          : 1;
-
-        s.x += Math.cos(s.angle) * s.speed;
-        s.y += Math.sin(s.angle) * s.speed;
-
-        const tailX = s.x - Math.cos(s.angle) * s.len;
-        const tailY = s.y - Math.sin(s.angle) * s.len;
-
-        const grad = ctx.createLinearGradient(tailX, tailY, s.x, s.y);
-        grad.addColorStop(0, "transparent");
-        grad.addColorStop(0.6, `rgba(0,229,255,${s.opacity * 0.6})`);
-        grad.addColorStop(1, `rgba(255,255,255,${s.opacity})`);
-
-        ctx.beginPath();
-        ctx.moveTo(tailX, tailY);
-        ctx.lineTo(s.x, s.y);
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-
-        // Glow dot at head
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${s.opacity})`;
-        ctx.fill();
-
-        if (s.life >= s.maxLife) {
-          s.active = false;
-          setTimeout(() => spawnShooter(s), Math.random() * 6000 + 2000);
-        }
-      });
-
+      ctx.globalAlpha = 1;
       t++;
       animFrame = requestAnimationFrame(draw);
     };
@@ -155,15 +125,30 @@ export default function CosmicBackground() {
 
     return () => {
       cancelAnimationFrame(animFrame);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none z-0"
-      style={{ opacity: 1 }}
-    />
+    <>
+      {/* Base atmosphere canvas */}
+      <canvas
+        ref={canvasRef}
+        className="fixed inset-0 w-full h-full pointer-events-none z-0"
+        aria-hidden="true"
+      />
+
+      {/* Film grain — adds texture, makes the background feel analogue and expensive */}
+      <div
+        className="fixed inset-0 pointer-events-none z-[2] bg-grain"
+        aria-hidden="true"
+      />
+
+      {/* Vignette — darkens edges, focuses the eye, premium framing */}
+      <div
+        className="fixed inset-0 pointer-events-none z-[3] bg-vignette"
+        aria-hidden="true"
+      />
+    </>
   );
 }

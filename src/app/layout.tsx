@@ -5,7 +5,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AskBabbal from "@/components/AskBabbal";
 import CosmicBackground from "@/components/CosmicBackground";
+import CursorGlow from "@/components/CursorGlow";
 import { PersonJsonLd, WebsiteJsonLd } from "@/components/JsonLd";
+import PageTransition from "@/components/PageTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,25 +22,26 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.babbalkhehra.com"),
   title: {
-    default: "Babbal Khehra — Author. Philosopher. Visionary.",
+    default: "Babbal Khehra — Community-Facing Digital Creator",
     template: "%s — Babbal Khehra",
   },
   description:
-    "Official site of Babbal Khehra — author of Alive and Ego & Enlightenment, philosopher, and architect of Blueprint Theory. Books, essays, music, and AI art.",
+    "Community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
   keywords: [
     "Babbal Khehra",
+    "community-facing digital creator",
+    "digital creator",
+    "community builder",
     "Blueprint Theory",
     "Ego and Enlightenment",
     "Alive book",
-    "philosopher",
     "author",
-    "philosophy book",
-    "consciousness",
-    "identity",
-    "self-discovery",
-    "AI art",
-    "music",
-    "The Man I Built Today",
+    "AI content systems",
+    "website builder",
+    "Logan community",
+    "civic engagement",
+    "public presence",
+    "digital storytelling",
   ],
   authors: [{ name: "Babbal Khehra", url: "https://www.babbalkhehra.com" }],
   creator: "Babbal Khehra",
@@ -49,9 +52,9 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
   openGraph: {
-    title: "Babbal Khehra — Author. Philosopher. Visionary.",
+    title: "Babbal Khehra — Community-Facing Digital Creator",
     description:
-      "Author of Alive and Ego & Enlightenment. Architect of Blueprint Theory. Music, AI films, and essays on consciousness and identity.",
+      "Community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
     url: "https://www.babbalkhehra.com",
     siteName: "Babbal Khehra",
     locale: "en_US",
@@ -61,15 +64,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Babbal Khehra — Author. Philosopher. Visionary.",
+        alt: "Babbal Khehra — Community-Facing Digital Creator",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Babbal Khehra — Author. Philosopher. Visionary.",
+    title: "Babbal Khehra — Community-Facing Digital Creator",
     description:
-      "Author of Alive and Ego & Enlightenment. Architect of Blueprint Theory.",
+      "Community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
     images: ["/og-image.png"],
     creator: "@babbal_khehra",
   },
@@ -89,9 +92,12 @@ export default function RootLayout({
         <PersonJsonLd />
         <WebsiteJsonLd />
         <CosmicBackground />
+        <CursorGlow />
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navigation />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
         </div>
         <AskBabbal />

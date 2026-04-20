@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { posts } from "@/data/posts";
 import PostContent from "@/components/PostContent";
+import BlogVisual from "@/components/BlogVisual";
 
 export function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
@@ -43,15 +44,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black" />
           </div>
         ) : (
-          <div className="w-full h-[40vh] min-h-[300px] bg-[#07070f] relative overflow-hidden star-bg flex items-end">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[#00e5ff]/4 blur-[100px] rounded-full pointer-events-none" />
-            {/* Image upload prompt */}
-            <div className="absolute top-8 right-8 flex items-center gap-2 px-4 py-2 border border-dashed border-[#00e5ff]/20 text-[#6b6b8a]/60 text-xs font-mono">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              Add cover image → public/images/blog/
-            </div>
+          <div className="w-full h-[40vh] min-h-[300px] relative overflow-hidden">
+            <BlogVisual category={post.category} title={post.title} className="absolute inset-0" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black" />
           </div>
         )}

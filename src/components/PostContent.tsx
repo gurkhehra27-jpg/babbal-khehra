@@ -1,6 +1,8 @@
 "use client";
 
+import { Fragment } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import type { Post } from "@/data/posts";
 
@@ -15,7 +17,6 @@ export default function PostContent({
 
   return (
     <>
-      {/* ── ARTICLE BODY ── */}
       <article className="px-6 py-16 max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -23,24 +24,67 @@ export default function PostContent({
           transition={{ duration: 0.8 }}
           className="space-y-6"
         >
-          {/* Excerpt callout */}
           <blockquote className="border-l-2 border-[#00e5ff]/40 pl-6 py-2 mb-10">
             <p className="text-[#e8e8f0] text-lg md:text-xl font-light leading-relaxed italic">
               {post.excerpt}
             </p>
           </blockquote>
 
-          {/* Body paragraphs */}
           {paragraphs.map((para, i) => {
-            const isNumberedList = /^\d+\./.test(para.trim());
+            const trimmed = para.trim();
+            const isHeading = /^##\s+/.test(trimmed);
+            const isNumberedList = /^\d+\./.test(trimmed);
+            const imageMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+
+            if (imageMatch) {
+              const [, caption, src] = imageMatch;
+              return (
+                <motion.figure
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+                  className="my-10"
+                >
+                  <div className="relative w-full aspect-[3/2] overflow-hidden border border-[#1a1a2e]">
+                    <Image
+                      src={src}
+                      alt={caption}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+                  </div>
+                  {caption && (
+                    <figcaption className="mt-3 text-[#6b6b8a] text-xs font-mono tracking-[0.2em] text-center">
+                      {caption}
+                    </figcaption>
+                  )}
+                </motion.figure>
+              );
+            }
+
+            if (isHeading) {
+              return (
+                <h2
+                  key={i}
+                  className="pt-4 text-2xl md:text-3xl font-light tracking-tight text-white"
+                >
+                  {trimmed.replace(/^##\s+/, "")}
+                </h2>
+              );
+            }
+
             if (isNumberedList) {
               const items = para
                 .split("\n")
-                .filter((l) => /^\d+\./.test(l.trim()));
+                .filter((line) => /^\d+\./.test(line.trim()));
+
               return (
                 <ol key={i} className="space-y-3 pl-2">
                   {items.map((item, j) => (
-                    <li key={j} className="flex gap-4 text-[#6b6b8a] text-base leading-relaxed">
+                    <li key={j} className="flex gap-4 text-[#9090aa] text-base leading-relaxed">
                       <span className="text-[#00e5ff] font-mono text-sm mt-0.5 flex-shrink-0">
                         {String(j + 1).padStart(2, "0")}
                       </span>
@@ -50,15 +94,19 @@ export default function PostContent({
                 </ol>
               );
             }
+
             return (
               <p key={i} className="text-[#9090aa] text-base md:text-lg leading-relaxed">
-                {para}
+                {para.split("\n").map((line, lineIndex) => (
+                  <Fragment key={lineIndex}>
+                    <span className="block">{line}</span>
+                  </Fragment>
+                ))}
               </p>
             );
           })}
         </motion.div>
 
-        {/* Tags */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -75,7 +123,6 @@ export default function PostContent({
           ))}
         </motion.div>
 
-        {/* Author bio strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -90,19 +137,18 @@ export default function PostContent({
               Babbal Khehra
             </p>
             <p className="text-[#6b6b8a] text-xs font-mono mb-3 tracking-widest">
-              Author · Philosopher · Fellow Traveller
+              Community-Facing Digital Creator
             </p>
             <p className="text-[#6b6b8a] text-sm leading-relaxed">
               Author of <em className="text-[#e8e8f0]">Alive</em> and{" "}
-              <em className="text-[#e8e8f0]">Ego & Enlightenment</em>. Architect of Blueprint
-              Theory. Writing at the intersection of consciousness, identity, and the art of
-              becoming.
+              <em className="text-[#e8e8f0]">Ego & Enlightenment</em>. Writing on
+              marketing, communication, AI, public presence, and the psychology of
+              trust.
             </p>
           </div>
         </motion.div>
       </article>
 
-      {/* ── RELATED POSTS ── */}
       {related.length > 0 && (
         <section className="py-16 px-6 border-t border-[#1a1a2e]">
           <div className="max-w-3xl mx-auto">
@@ -130,7 +176,6 @@ export default function PostContent({
         </section>
       )}
 
-      {/* ── BACK ── */}
       <div className="py-12 px-6 text-center border-t border-[#1a1a2e]">
         <Link
           href="/blog"

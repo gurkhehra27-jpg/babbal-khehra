@@ -3,17 +3,27 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Babbal Khehra is an author, philosopher, and architect of Blueprint Theory — a framework for intentional self-construction. A fellow traveller, not a guru.",
-  keywords: ["Babbal Khehra", "Blueprint Theory", "philosopher", "author bio", "fellow traveller", "identity", "consciousness", "self-design"],
+    "Babbal Khehra is a community-facing digital creator working across marketing, psychology, communication, and public presence to build trust, visibility, and human connection.",
+  keywords: [
+    "Babbal Khehra",
+    "marketing",
+    "psychology",
+    "communication",
+    "community engagement",
+    "human connection",
+    "digital creator",
+  ],
   openGraph: {
-    title: "About Babbal Khehra — Fellow Traveller",
-    description: "Author, philosopher, and architect of Blueprint Theory. A fellow traveller who built a map and is sharing it.",
+    title: "About Babbal Khehra",
+    description:
+      "Community-facing digital creator exploring marketing, psychology, communication, and the human side of influence.",
     url: "https://www.babbalkhehra.com/about",
     type: "profile",
   },
   twitter: {
-    title: "About Babbal Khehra — Fellow Traveller",
-    description: "Author, philosopher, and architect of Blueprint Theory.",
+    title: "About Babbal Khehra",
+    description:
+      "Community-facing digital creator exploring marketing, psychology, communication, and human connection.",
   },
   alternates: { canonical: "https://www.babbalkhehra.com/about" },
 };

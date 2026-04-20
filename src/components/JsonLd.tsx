@@ -5,15 +5,15 @@ export function PersonJsonLd() {
     name: "Babbal Khehra",
     url: "https://www.babbalkhehra.com",
     sameAs: [
+      "https://www.instagram.com/babbal_khehra/",
       "https://open.spotify.com/artist/7aKTbZVRNMdWvIPOfS0fgS",
       "https://www.youtube.com/channel/UC9QYIH2FUVSc2Rm45fLllAA",
       "https://www.tiktok.com/@babbal_khehra",
-      "https://www.instagram.com/ego_and_enlightenment_book",
     ],
-    jobTitle: "Author and Philosopher",
+    jobTitle: "Community-Facing Digital Creator",
     description:
-      "Author of Alive and Ego & Enlightenment. Philosopher and architect of Blueprint Theory — a framework for intentional self-construction.",
-    knowsAbout: ["Philosophy", "Consciousness", "Identity", "Blueprint Theory", "Self-discovery"],
+      "Community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
+    knowsAbout: ["Digital Creation", "Community Building", "AI Systems", "Website Development", "Civic Engagement", "Storytelling", "Content Strategy"],
   };
 
   return (
@@ -88,7 +88,7 @@ export function WebsiteJsonLd() {
     name: "Babbal Khehra",
     url: "https://www.babbalkhehra.com",
     description:
-      "Official site of Babbal Khehra — author, philosopher, and architect of Blueprint Theory.",
+      "Official site of Babbal Khehra — community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
     author: {
       "@type": "Person",
       name: "Babbal Khehra",
