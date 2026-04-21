@@ -1,64 +1,21 @@
 import React from "react";
 
-const categoryConfig: Record<string, { symbol: string; accent: string; lines: string }> = {
-  Business:      { symbol: "◈", accent: "#00e5ff", lines: "grid" },
-  Communication: { symbol: "◉", accent: "#00daf0", lines: "radial" },
-  Philosophy:    { symbol: "◎", accent: "#64b8ff", lines: "arc" },
-  Personal:      { symbol: "◇", accent: "#00e5ff", lines: "dots" },
-  Digital:       { symbol: "⬡", accent: "#00c8e0", lines: "hex" },
-  Marketing:     { symbol: "△", accent: "#00e5ff", lines: "grid" },
-  Community:     { symbol: "○", accent: "#00daf0", lines: "radial" },
+const categoryConfig: Record<string, { accent: string; wash: string }> = {
+  Business: { accent: "#00e5ff", wash: "rgba(0, 229, 255, 0.10)" },
+  Communication: { accent: "#00daf0", wash: "rgba(0, 218, 240, 0.10)" },
+  Philosophy: { accent: "#64b8ff", wash: "rgba(100, 184, 255, 0.10)" },
+  Personal: { accent: "#00e5ff", wash: "rgba(0, 229, 255, 0.08)" },
+  Digital: { accent: "#00c8e0", wash: "rgba(0, 200, 224, 0.10)" },
+  Marketing: { accent: "#00e5ff", wash: "rgba(0, 229, 255, 0.10)" },
+  Community: { accent: "#00daf0", wash: "rgba(0, 218, 240, 0.09)" },
 };
 
 function getConfig(category: string) {
-  return categoryConfig[category] ?? { symbol: "◆", accent: "#00e5ff", lines: "grid" };
-}
-
-function GridPattern() {
-  return (
-    <svg className="absolute inset-0 w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
-          <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#00e5ff" strokeWidth="0.5"/>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid)"/>
-    </svg>
-  );
-}
-
-function RadialPattern() {
-  return (
-    <svg className="absolute inset-0 w-full h-full opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
-          <circle cx="10" cy="10" r="1" fill="#00e5ff"/>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#dots)"/>
-    </svg>
-  );
-}
-
-function ArcPattern() {
-  return (
-    <svg className="absolute inset-0 w-full h-full opacity-[0.06]" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      {[40, 70, 100, 130, 160].map((r) => (
-        <circle key={r} cx="100" cy="200" r={r} fill="none" stroke="#00e5ff" strokeWidth="0.6"/>
-      ))}
-    </svg>
-  );
-}
-
-function getPattern(lines: string) {
-  if (lines === "radial" || lines === "dots") return <RadialPattern />;
-  if (lines === "arc") return <ArcPattern />;
-  return <GridPattern />;
+  return categoryConfig[category] ?? { accent: "#00e5ff", wash: "rgba(0, 229, 255, 0.08)" };
 }
 
 export default function BlogVisual({
   category,
-  title,
   className = "",
 }: {
   category: string;
@@ -66,47 +23,30 @@ export default function BlogVisual({
   className?: string;
 }) {
   const cfg = getConfig(category);
-  const initial = title ? title[0].toUpperCase() : category[0].toUpperCase();
 
   return (
-    <div className={`relative bg-[#07070f] overflow-hidden flex items-center justify-center ${className}`}>
-      {getPattern(cfg.lines)}
-
-      {/* Large faded initial */}
-      <span
-        className="absolute select-none font-light leading-none pointer-events-none"
-        style={{
-          fontSize: "clamp(80px, 30%, 220px)",
-          color: cfg.accent,
-          opacity: 0.04,
-          letterSpacing: "-0.05em",
-        }}
-      >
-        {initial}
-      </span>
-
-      {/* Center symbol */}
-      <span
-        className="relative z-10 text-2xl"
-        style={{ color: cfg.accent, opacity: 0.25 }}
-      >
-        {cfg.symbol}
-      </span>
-
-      {/* Thin horizontal accent line */}
+    <div className={`relative bg-[#07070f] overflow-hidden ${className}`}>
       <div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: `linear-gradient(to right, transparent, ${cfg.accent}40, transparent)` }}
+        className="absolute inset-0"
+        style={{
+          background:
+            `radial-gradient(circle at 24% 18%, ${cfg.wash}, transparent 34%), ` +
+            "linear-gradient(135deg, rgba(255,255,255,0.035), transparent 45%), " +
+            "linear-gradient(180deg, #0b0b14 0%, #050509 100%)",
+        }}
       />
-
-      {/* Category badge — top left */}
-      <div className="absolute top-4 left-4">
+      <div
+        className="absolute inset-x-0 bottom-0 h-px"
+        style={{ background: `linear-gradient(to right, transparent, ${cfg.accent}55, transparent)` }}
+      />
+      <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
         <span
-          className="text-[10px] tracking-[0.35em] uppercase font-mono px-2 py-1 border"
-          style={{ color: cfg.accent, borderColor: `${cfg.accent}30`, background: "rgba(0,0,0,0.6)" }}
+          className="font-mono text-[10px] uppercase tracking-[0.34em]"
+          style={{ color: cfg.accent, opacity: 0.7 }}
         >
           {category}
         </span>
+        <span className="h-px w-10" style={{ backgroundColor: cfg.accent, opacity: 0.25 }} />
       </div>
     </div>
   );
