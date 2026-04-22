@@ -79,6 +79,11 @@ export const metadata: Metadata = {
  alternates: {
  canonical: "https://www.babbalkhehra.com",
  },
+ icons: {
+ icon: "/icon.png",
+ shortcut: "/favicon.ico",
+ apple: "/icon.png",
+ },
 };
 
 export default function RootLayout({

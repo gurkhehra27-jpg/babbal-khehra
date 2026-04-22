@@ -24,10 +24,6 @@ export default function Navigation() {
  return () => window.removeEventListener("scroll", onScroll);
  }, []);
 
- useEffect(() => {
- setMenuOpen(false);
- }, [pathname]);
-
  return (
  <>
  <motion.nav
@@ -114,6 +110,7 @@ export default function Navigation() {
  >
  <Link
  href={link.href}
+ onClick={() => setMenuOpen(false)}
  className={`text-3xl font-light tracking-[0.3em] uppercase transition-colors ${
  pathname === link.href ? "text-[#00e5ff] glow-cyan" : "text-white"
  }`}

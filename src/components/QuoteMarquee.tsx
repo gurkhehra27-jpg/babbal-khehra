@@ -15,7 +15,7 @@ const marqueeQuotes = [
  "Digital is the new town square.",
 ];
 
-const doubled = [...marqueeQuotes,...marqueeQuotes];
+const doubled = [...marqueeQuotes, ...marqueeQuotes];
 
 export default function QuoteMarquee() {
  return (
@@ -24,14 +24,13 @@ export default function QuoteMarquee() {
  <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#07070f] to-transparent z-10 pointer-events-none" />
 
  <motion.div
- className="flex gap-12 whitespace-nowrap"
+ className="flex gap-16 whitespace-nowrap"
  animate={{ x: ["0%", "-50%"] }}
  transition={{ duration: 45, ease: "linear", repeat: Infinity }}
  >
  {doubled.map((quote, i) => (
- <span key={i} className="flex items-center gap-12 flex-shrink-0">
+ <span key={i} className="flex items-center flex-shrink-0">
  <span className="text-[#6b6b8a] text-sm font-mono tracking-[0.15em]">{quote}</span>
- <span className="text-[#00e5ff]/25 text-xs">◈</span>
  </span>
  ))}
  </motion.div>
