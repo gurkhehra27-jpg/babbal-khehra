@@ -22,8 +22,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
  metadataBase: new URL("https://www.babbalkhehra.com"),
  title: {
- default: "Babbal Khehra — Community-Facing Digital Creator",
- template: "%s — Babbal Khehra",
+ default: "Babbal Khehra - Community-Facing Digital Creator",
+ template: "%s - Babbal Khehra",
  },
  description:
  "Community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
  googleBot: { index: true, follow: true, "max-image-preview": "large" },
  },
  openGraph: {
- title: "Babbal Khehra — Community-Facing Digital Creator",
+ title: "Babbal Khehra - Community-Facing Digital Creator",
  description:
  "Community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
  url: "https://www.babbalkhehra.com",
@@ -64,13 +64,13 @@ export const metadata: Metadata = {
  url: "/og-image.png",
  width: 1200,
  height: 630,
- alt: "Babbal Khehra — Community-Facing Digital Creator",
+ alt: "Babbal Khehra - Community-Facing Digital Creator",
  },
  ],
  },
  twitter: {
  card: "summary_large_image",
- title: "Babbal Khehra — Community-Facing Digital Creator",
+ title: "Babbal Khehra - Community-Facing Digital Creator",
  description:
  "Community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
  images: ["/og-image.png"],

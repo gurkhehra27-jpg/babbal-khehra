@@ -9,7 +9,7 @@ const books = [
  title: "Alive",
  subtitle: "A Story of Survival and Awakening",
  description:
- "A visceral journey through the corridors of existence. Alive strips away everything comfortable and asks a single question: when you have nothing left, who are - A narrative that challenges your relationship with survival, identity, and the will to endure.",
+ "A visceral journey through the corridors of existence. Alive strips away everything comfortable and asks a single question: when you have nothing left, who are you? A narrative that challenges your relationship with survival, identity, and the will to endure.",
     genre: "Fiction / Philosophy",
  year: "2025",
  amazonUrl: "https://amzn.asia/d/01UfATi7",
@@ -25,7 +25,7 @@ const books = [
  title: "Ego & Enlightenment",
  subtitle: "The Architecture of the Self",
  description:
- "What if the ego is not your enemy, but your most misunderstood - This book dismantles the war between self and soul, weaving philosophy, psychology, and lived experience into a new framework for understanding consciousness and identity.",
+ "What if the ego is not your enemy, but your most misunderstood teacher? This book dismantles the war between self and soul, weaving philosophy, psychology, and lived experience into a new framework for understanding consciousness and identity.",
     genre: "Philosophy / Self-Discovery",
  year: "2025",
  amazonUrl: "https://amzn.asia/d/0bXshqi8",

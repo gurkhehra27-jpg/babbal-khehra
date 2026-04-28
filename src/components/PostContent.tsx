@@ -48,12 +48,7 @@ export default function PostContent({
  className="my-10"
  >
  <div className="relative w-full aspect-[3/2] overflow-hidden border border-[#1a1a2e]">
- <Image
- src={src}
- alt={caption}
- fill
- className="object-cover"
- />
+ <Image src={src} alt={caption} fill className="object-cover" />
  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
  </div>
  {caption && (
@@ -67,19 +62,14 @@ export default function PostContent({
 
  if (isHeading) {
  return (
- <h2
- key={i}
- className="pt-4 text-2xl md:text-3xl font-light tracking-tight text-white"
- >
+ <h2 key={i} className="pt-4 text-2xl md:text-3xl font-light tracking-tight text-white">
  {trimmed.replace(/^##\s+/, "")}
  </h2>
  );
  }
 
  if (isNumberedList) {
- const items = para
-.split("\n")
-.filter((line) => /^\d+\./.test(line.trim()));
+ const items = para.split("\n").filter((line) => /^\d+\./.test(line.trim()));
 
  return (
  <ol key={i} className="space-y-3 pl-2">
@@ -133,17 +123,14 @@ export default function PostContent({
  <span className="text-[#00e5ff]/30 text-lg font-light">BK</span>
  </div>
  <div>
- <p className="text-white text-sm font-light tracking-widest uppercase mb-1">
- Babbal Khehra
- </p>
+ <p className="text-white text-sm font-light tracking-widest uppercase mb-1">Babbal Khehra</p>
  <p className="text-[#6b6b8a] text-xs font-mono mb-3 tracking-widest">
  Community-Facing Digital Creator
  </p>
  <p className="text-[#6b6b8a] text-sm leading-relaxed">
  Author of <em className="text-[#e8e8f0]">Alive</em> and{" "}
- <em className="text-[#e8e8f0]">Ego & Enlightenment</em>. Writing on
- marketing, communication, AI, public presence, and the psychology of
- trust.
+ <em className="text-[#e8e8f0]">Ego & Enlightenment</em>. Writing on marketing,
+ communication, AI, public presence, and the psychology of trust.
  </p>
  </div>
  </motion.div>
@@ -163,7 +150,7 @@ export default function PostContent({
  className="group block p-6 border border-[#1a1a2e] bg-[#07070f] hover:border-[#00e5ff]/30 transition-all duration-400"
  >
  <p className="text-[#00e5ff] text-xs font-mono mb-3 opacity-60">
- {rel.category} · {rel.readTime}
+ {rel.category} / {rel.readTime}
  </p>
  <h4 className="text-white text-lg font-light group-hover:text-[#00e5ff] transition-colors duration-300 mb-2">
  {rel.title}
@@ -181,7 +168,7 @@ export default function PostContent({
  href="/blog"
  className="inline-flex items-center gap-3 text-[#6b6b8a] text-sm tracking-[0.2em] uppercase font-mono hover:text-[#00e5ff] transition-colors duration-300"
  >
- ← All Essays
+ All Essays
  </Link>
  </div>
  </>

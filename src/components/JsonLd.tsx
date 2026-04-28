@@ -13,7 +13,15 @@ export function PersonJsonLd() {
  jobTitle: "Community-Facing Digital Creator",
  description:
  "Community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
- knowsAbout: ["Digital Creation", "Community Building", "AI Systems", "Website Development", "Civic Engagement", "Storytelling", "Content Strategy"],
+ knowsAbout: [
+ "Digital Creation",
+ "Community Building",
+ "AI Systems",
+ "Website Development",
+ "Civic Engagement",
+ "Storytelling",
+ "Content Strategy",
+ ],
  };
 
  return (
@@ -40,7 +48,7 @@ export function BooksJsonLd() {
  bookFormat: "https://schema.org/Paperback",
  datePublished: "2025",
  description:
- "A visceral journey through the corridors of existence. Alive strips away everything comfortable and asks: when you have nothing left, who are -",
+ "A visceral journey through the corridors of existence. Alive strips away everything comfortable and asks a single question: when you have nothing left, who are you?",
  genre: ["Philosophy", "Fiction"],
  inLanguage: "en",
  offers: {
@@ -61,7 +69,7 @@ export function BooksJsonLd() {
  bookFormat: "https://schema.org/Paperback",
  datePublished: "2025",
  description:
- "A philosophical dismantling of the war between self and soul. The ego is not your enemy — it is the door. A framework for understanding consciousness and identity.",
+ "A philosophical dismantling of the war between self and soul. The ego is not your enemy. It is the door. A framework for understanding consciousness and identity.",
  genre: ["Philosophy", "Self-Help", "Psychology"],
  inLanguage: "en",
  offers: {
@@ -88,18 +96,10 @@ export function WebsiteJsonLd() {
  name: "Babbal Khehra",
  url: "https://www.babbalkhehra.com",
  description:
- "Official site of Babbal Khehra — community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
+ "Official site of Babbal Khehra, community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
  author: {
  "@type": "Person",
  name: "Babbal Khehra",
- },
- potentialAction: {
- "@type": "SearchAction",
- target: {
- "@type": "EntryPoint",
- urlTemplate: "-{search_term_string}",
- },
- "query-input": "required name=search_term_string",
  },
  };
 
