@@ -46,7 +46,7 @@ This is also why simple businesses often outperform clever ones. A clear offer, 
 That does not mean ideas do not matter. They do. But ideas without execution are decorative. They sound good in meetings and die quietly in practice. Real growth happens when businesses stop treating execution like a secondary skill and start seeing it for what it is, the mechanism that turns potential into results.
 
 In the end, most businesses do not need another brainstorm. They need a structure that can carry one good idea far enough to matter.`,
-    coverImage: null,
+    coverImage: "/images/blog/why-most-businesses-need-execution.webp",
     category: "Business",
     tags: ["execution", "business", "operations", "consistency", "growth"],
     date: "April 20, 2026",
@@ -72,7 +72,7 @@ There is also a human side to this. Professional does not mean cold. It does not
 That is the real function of professionalism. It lowers risk for the other person. It tells clients, customers, colleagues, and partners that you can be counted on. It creates confidence before results are even fully visible. It turns your presence into something stable, not just impressive.
 
 In the end, looking polished may help people notice you. But professionalism is what makes them stay calm once they are dealing with you. And that matters far more.`,
-    coverImage: null,
+    coverImage: "/images/blog/professionalism-not-corporate.webp",
     category: "Communication",
     tags: ["professionalism", "trust", "communication", "reliability", "standards"],
     date: "April 20, 2026",
@@ -98,7 +98,7 @@ There is also a trust component here. Clear communication signals confidence. It
 The strongest brands usually communicate with surprising simplicity. They know who they are, what they do, and how to express it without unnecessary noise. That does not make them basic. It makes them effective. Their message can travel because it is built to be understood, remembered, and repeated.
 
 In the end, clever marketing can get attention. Clear communication gets belief. And belief is what turns interest into action.`,
-    coverImage: null,
+    coverImage: "/images/blog/clear-communication-wins.webp",
     category: "Communication",
     tags: ["clarity", "marketing", "communication", "trust", "messaging"],
     date: "April 20, 2026",
@@ -124,7 +124,7 @@ This is why the strongest businesses do not treat AI like a replacement for thin
 The businesses that benefit most from AI are not the ones looking for shortcuts. They are the ones looking for sharper systems. They understand that speed only matters when it is attached to clarity. And clarity only matters when it is attached to something real.
 
 AI is useful because modern business is full of friction, delays, admin, repetition, and noise. Remove enough of that, and people can spend more time on what actually grows the business, decisions, relationships, positioning, trust, and execution. That is where the value is. Not in replacing humans, but in helping capable humans move with less resistance.`,
-    coverImage: null,
+    coverImage: "/images/blog/what-ai-solves-business.webp",
     category: "AI Solutions",
     tags: ["ai", "business", "systems", "execution", "automation"],
     date: "April 20, 2026",
@@ -152,7 +152,7 @@ Real trust is slower. It is built through consistency, useful thinking, emotiona
 Visibility matters, obviously. You cannot be trusted if no one knows you exist. But visibility is the outer layer, not the core. Trust is the asset underneath it. It is what turns attention into gravity. It is what makes people come back, not because you were loud, but because you felt real.
 
 In the end, the goal is not just to be seen. The goal is to mean something when you are seen.`,
-    coverImage: null,
+    coverImage: "/images/blog/visibility-without-trust.webp",
     category: "Communication",
     tags: ["trust", "visibility", "credibility", "influence", "brand"],
     date: "April 20, 2026",
@@ -184,7 +184,7 @@ Strong positioning changes everything. It makes your content easier to create be
 This does not mean you need to become robotic or overly narrow. It means you need a centre of gravity. A clear signal. A memorable edge. Something stable enough that all your content points back to the same core idea. Once that exists, posting becomes amplification instead of guesswork.
 
 The truth is simple. Content volume can increase reach, but positioning increases meaning. And meaning is what gives content power. Without positioning, posting is just motion. With positioning, it becomes direction.`,
-    coverImage: null,
+    coverImage: "/images/blog/positioning-over-posting.webp",
     category: "Marketing",
     tags: ["positioning", "content", "branding", "clarity", "strategy"],
     date: "April 20, 2026",
@@ -216,7 +216,7 @@ This is also why psychology still sits underneath every digital strategy. People
 Digital influence is not fake by nature. But it becomes fake when people strip out the human core and leave only technique. The strongest digital presence is not just strategic. It is psychologically coherent. It knows what it is saying, why it is saying it, and how it wants people to feel.
 
 In the end, influence is not built by gaming the machine alone. It is built by understanding the human on the other side of the screen. The tools evolve. The platforms shift. The human nervous system stays strangely ancient. Anyone who forgets that ends up talking loudly without ever truly being heard.`,
-    coverImage: null,
+    coverImage: "/images/blog/psychology-digital-influence.webp",
     category: "Communication",
     tags: ["digital influence", "psychology", "trust", "presence", "communication"],
     date: "April 20, 2026",
@@ -383,7 +383,7 @@ If they remember you, they can trust you.
 If they trust you, opportunity starts to move.
 
 That is when marketing begins to work.`,
-    coverImage: null,
+    coverImage: "/images/blog/marketing-message-problem.webp",
     category: "Communication",
     tags: ["communication", "marketing", "clarity", "trust", "positioning"],
     date: "April 20, 2026",
@@ -485,7 +485,7 @@ Every single one of these facts is mainstream science. No woo, no speculation - 
 We can split atoms and edit genes, but we don't understand the basic nature of self, thought, time, or life.
 
 We are a young species - and maybe that's exciting. Because if there's this much we don't understand, imagine how much is still waiting.`,
-    coverImage: null,
+    coverImage: "/images/blog/we-still-do-not-understand-reality.webp",
     category: "Philosophy",
     tags: ["consciousness", "science", "humanity", "knowledge", "mystery"],
     date: "August 2, 2025",
@@ -621,7 +621,7 @@ We don't want separation.
 We want truth.
 
 We want you to stop pretending we're only Indian when you need heroes, and not Indian when we ask for respect.`,
-    coverImage: null,
+    coverImage: "/images/blog/punjab-frontline-war.webp",
     category: "Politics",
     tags: ["Punjab", "India", "Pakistan", "war", "identity", "justice"],
     date: "May 11, 2025",
@@ -787,7 +787,7 @@ Accept the truth. That you're not crazy. That this world is broken. And that may
 The world is ending.
 
 But maybe that's the beginning.`,
-    coverImage: null,
+    coverImage: "/images/blog/world-ends-rebirth-fantasy.webp",
     category: "Personal",
     tags: ["society", "collapse", "rebirth", "consciousness", "truth", "modern life"],
     date: "May 8, 2025",
@@ -809,7 +809,7 @@ The books came first as a way to make sense of that pressure. The blog became a 
 I do not want this site to feel like a content machine. I want it to feel like a record of someone paying attention. Some pieces will be practical. Some will be personal. Some will be strange because life is strange before it is tidy.
 
 That is the reason I write: to make the fog a little less vague, and to leave behind something another person can recognise.`,
-    coverImage: null,
+    coverImage: "/images/blog/why-i-started-writing.webp",
     category: "Personal",
     tags: ["writing", "philosophy", "creativity", "storytelling", "voice"],
     date: "February 1, 2025",
@@ -837,7 +837,7 @@ The ego is the blueprint. Enlightenment is what you build on top of it.
 I wrote Ego & Enlightenment because I got tired of philosophies that asked me to disappear. I wanted a philosophy that asked me to show up - fully, consciously, and without apology.
 
 This is that philosophy.`,
-    coverImage: null,
+    coverImage: "/images/blog/ego-is-not-your-enemy.webp",
     category: "Blueprint Theory",
     tags: ["ego", "philosophy", "enlightenment", "identity"],
     date: "March 15, 2026",
@@ -865,7 +865,7 @@ We build elaborate systems of distraction. We call it productivity. We call it m
 My answer, after writing an entire book about it: you will find yourself. And that is both the most ordinary and the most extraordinary thing in the universe.
 
 The question "am I alive?" is not a crisis. It is an invitation. The only wrong answer is to never ask it.`,
-    coverImage: null,
+    coverImage: "/images/blog/what-does-it-mean-to-be-alive.webp",
     category: "Philosophy",
     tags: ["alive", "consciousness", "existence", "presence"],
     date: "February 28, 2026",
@@ -901,7 +901,7 @@ The three pillars of Blueprint Theory are:
 Everything I write, film, and create is an exploration of one or more of these pillars.
 
 Welcome to the blueprint.`,
-    coverImage: null,
+    coverImage: "/images/blog/blueprint-theory-introduction.webp",
     category: "Blueprint Theory",
     tags: ["blueprint theory", "philosophy", "identity", "self-design"],
     date: "January 20, 2026",
