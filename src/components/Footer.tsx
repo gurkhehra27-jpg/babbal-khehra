@@ -13,7 +13,7 @@ export default function Footer() {
  Babbal Khehra
  </span>
  <span className="text-[#6b6b8a] text-xs tracking-widest">
- Author · Marketing · Psychology
+ Author / Marketing / Psychology
  </span>
  </div>
 
@@ -60,10 +60,10 @@ export default function Footer() {
 
  <div className="mt-8 pt-6 border-t border-[#0e0e1a] flex flex-col md:flex-row items-center justify-between gap-2">
  <p className="text-[#6b6b8a] text-xs">
- © {new Date().getFullYear()} Babbal Khehra. All rights reserved.
+ Copyright {new Date().getFullYear()} Babbal Khehra. All rights reserved.
  </p>
  <p className="text-[#6b6b8a] text-xs font-mono">
- Human Connection · Est. 2025
+ Human Connection / Est. 2025
  </p>
  </div>
  </div>

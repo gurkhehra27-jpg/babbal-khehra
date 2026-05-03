@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/og";
+﻿import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
 export const runtime = "edge";
@@ -131,21 +131,6 @@ export async function GET(req: NextRequest) {
  Babbal Khehra
  </div>
 
- {/* Right decoration */}
- <div
- style={{
- position: "absolute",
- right: "80px",
- bottom: "72px",
- display: "flex",
- flexDirection: "column",
- alignItems: "flex-end",
- gap: "8px",
- }}
- >
- <div style={{ color: "#00e5ff", fontSize: "32px", opacity: 0.2 }}>◈</div>
- <div style={{ color: "#00e5ff", fontSize: "20px", opacity: 0.12 }}>◈</div>
- </div>
  </div>
  ),
  { width: 1200, height: 630 }

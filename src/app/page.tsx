@@ -17,13 +17,13 @@ export default function HomePage() {
  return (
  <div className="bg-black">
 
- {/* -”€-”€ HERO -”€-”€ */}
+ {/* -- HERO -- */}
  <section ref={heroRef} className="relative min-h-screen overflow-hidden star-bg">
  {/* Ambient glows */}
  <div className="absolute top-1/3 left-1/4 w-[500px] h-[600px] rounded-full bg-[#00e5ff]/4 blur-[150px] pointer-events-none" />
  <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[#00e5ff]/3 blur-[100px] pointer-events-none" />
 
- {/* -”€-”€ Mobile: full-bleed editorial poster -”€-”€ */}
+ {/* -- Mobile: full-bleed editorial poster -- */}
  <motion.div
  initial={{ opacity: 0 }}
  animate={{ opacity: 1 }}
@@ -167,10 +167,10 @@ export default function HomePage() {
  </motion.div>
  </section>
 
- {/* -”€-”€ MARQUEE -”€-”€ */}
+ {/* -- MARQUEE -- */}
  <QuoteMarquee />
 
- {/* -”€-”€ WHAT I BUILD -”€-”€ */}
+ {/* -- WHAT I BUILD -- */}
  <section className="py-20 md:py-32 px-6">
  <div className="max-w-6xl mx-auto">
  <motion.div
@@ -246,7 +246,7 @@ export default function HomePage() {
  </div>
  </section>
 
- {/* -”€-”€ MANIFESTO -”€-”€ */}
+ {/* -- MANIFESTO -- */}
  <section className="py-20 md:py-32 px-6 relative overflow-hidden">
  <div className="absolute inset-0 bg-[#07070f]" />
  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00e5ff]/20 to-transparent" />
@@ -286,7 +286,7 @@ export default function HomePage() {
  </motion.div>
  </section>
 
- {/* -”€-”€ PROOF OF WORK -”€-”€ */}
+ {/* -- PROOF OF WORK -- */}
  <section className="py-20 md:py-32 px-6">
  <div className="max-w-6xl mx-auto">
  <motion.div
@@ -372,7 +372,7 @@ export default function HomePage() {
  </div>
  </section>
 
- {/* -”€-”€ BOOKS -”€-”€ */}
+ {/* -- BOOKS -- */}
  <section className="py-16 md:py-24 px-6">
  <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1a1a2e] to-transparent" />
  <div className="max-w-6xl mx-auto">

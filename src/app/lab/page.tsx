@@ -6,19 +6,19 @@ const projects = [
  {
  id: 1,
  num: "01",
- category: "Website · Brand",
+ category: "Website / Brand",
  title: "babbalkhehra.com",
  subtitle: "This site as a product",
  description:
  "A full-stack personal brand platform designed and built from scratch. Cinematic hero layout, editorial design system, responsive across all devices, AI-integrated chat, and SEO-structured content architecture.",
  stack: ["Next.js 16", "Tailwind CSS 4", "TypeScript", "Framer Motion", "OpenAI API"],
- outcome: "Live · Optimised · Ongoing",
+ outcome: "Live / Optimised / Ongoing",
  featured: true,
  },
  {
  id: 2,
  num: "02",
- category: "AI · Full-Stack",
+ category: "AI / Full-Stack",
  title: "Quantum Seer",
  subtitle: "AI-powered prediction platform",
  description:
@@ -30,7 +30,7 @@ const projects = [
  {
  id: 3,
  num: "03",
- category: "AI · Integration",
+ category: "AI / Integration",
  title: "AskBabbal",
  subtitle: "AI-powered personal assistant",
  description:
@@ -42,7 +42,7 @@ const projects = [
  {
  id: 4,
  num: "04",
- category: "AI · Content",
+ category: "AI / Content",
  title: "AI Editorial System",
  subtitle: "Scalable content infrastructure",
  description:
@@ -54,11 +54,11 @@ const projects = [
  {
  id: 5,
  num: "05",
- category: "Community · Strategy",
+ category: "Community / Strategy",
  title: "Community Visibility",
  subtitle: "Digital strategy for real-world impact",
  description:
- "Digital presence strategy for community and civic engagement. Building the online infrastructure that supports visibility and credibility — social presence, content systems, discoverability, and editorial framing.",
+ "Digital presence strategy for community and civic engagement. Building the online infrastructure that supports visibility and credibility: social presence, content systems, discoverability, and editorial framing.",
  stack: ["Digital Strategy", "Content Systems", "SEO", "Social"],
  outcome: "Active",
  featured: false,
@@ -72,7 +72,7 @@ const capabilities = [
  },
  {
  area: "Build",
- items: ["Next.js · React", "Supabase · API", "TypeScript", "Responsive + performant"],
+ items: ["Next.js / React", "Supabase / API", "TypeScript", "Responsive + performant"],
  },
  {
  area: "AI",
@@ -127,7 +127,7 @@ export default function LabPage() {
  return (
  <div className="bg-black min-h-screen">
 
- {/* ── HEADER ── */}
+ {/* Header */}
  <section className="pt-40 pb-20 px-6 relative overflow-hidden">
  <div className="absolute top-0 left-1/3 w-[500px] h-[400px] bg-[#00e5ff]/4 blur-[120px] rounded-full pointer-events-none" />
  <div className="max-w-6xl mx-auto relative">
@@ -154,14 +154,14 @@ export default function LabPage() {
  transition={{ duration: 0.8, delay: 0.25 }}
  className="text-[#6b6b8a] text-lg max-w-lg leading-relaxed"
  >
- Websites, AI systems, content infrastructure, and digital storytelling — built from scratch, shipped for real.
+ Websites, AI systems, content infrastructure, and digital storytelling, built from scratch and shipped for real.
  </motion.p>
  </div>
  </section>
 
  <div className="h-px bg-gradient-to-r from-transparent via-[#00e5ff]/20 to-transparent" />
 
- {/* ── FEATURED PROJECT — babbalkhehra.com ── */}
+ {/* Featured project */}
  <section className="py-20 px-6">
  <div className="max-w-6xl mx-auto">
  <motion.p
@@ -232,7 +232,7 @@ export default function LabPage() {
  </div>
  </section>
 
- {/* ── CASE STUDIES GRID ── */}
+ {/* Case studies grid */}
  <section className="pb-20 px-6">
  <div className="max-w-6xl mx-auto">
  <motion.p
@@ -302,7 +302,7 @@ export default function LabPage() {
 
  <div className="h-px bg-gradient-to-r from-transparent via-[#00e5ff]/10 to-transparent" />
 
- {/* ── CAPABILITIES ── */}
+ {/* Capabilities */}
  <section className="py-24 px-6 relative overflow-hidden">
  <div className="absolute inset-0 bg-[#07070f]" />
  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00e5ff]/15 to-transparent" />
@@ -350,7 +350,7 @@ export default function LabPage() {
  </div>
  </section>
 
- {/* ── PLATFORM LINKS — credibility signals ── */}
+ {/* Platform links */}
  <section className="py-20 px-6">
  <div className="max-w-6xl mx-auto">
  <motion.div
@@ -396,7 +396,7 @@ export default function LabPage() {
  </div>
  </section>
 
- {/* ── MUSIC EMBED — small, credibility ── */}
+ {/* Music embed */}
  <section className="pb-24 px-6">
  <div className="max-w-6xl mx-auto">
  <motion.div
@@ -407,7 +407,7 @@ export default function LabPage() {
  className="mb-6"
  >
  <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono opacity-60">
- Music — The Man I Built Today
+ Music / The Man I Built Today
  </p>
  </motion.div>
 
@@ -419,7 +419,7 @@ export default function LabPage() {
  className="border border-[#1a1a2e] overflow-hidden"
  >
  <iframe
- src="-"
+ src="https://open.spotify.com/embed/artist/7aKTbZVRNMdWvIPOfS0fgS?utm_source=generator"
  width="100%"
  height="152"
  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"

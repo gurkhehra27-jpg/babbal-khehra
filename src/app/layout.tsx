@@ -61,7 +61,7 @@ export const metadata: Metadata = {
  type: "website",
  images: [
  {
- url: "/og-image.png",
+ url: "/images/photoformainpage.png",
  width: 1200,
  height: 630,
  alt: "Babbal Khehra - Community-Facing Digital Creator",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
  title: "Babbal Khehra - Community-Facing Digital Creator",
  description:
  "Community-facing digital creator using websites, AI, storytelling, and public-facing media to build visibility, trust, and opportunity.",
- images: ["/og-image.png"],
+ images: ["/images/photoformainpage.png"],
  creator: "@babbal_khehra",
  },
  alternates: {

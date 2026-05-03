@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
  {
  userAgent: "*",
  allow: "/",
- disallow: ["/api"],
+ disallow: ["/api/"],
  },
  ],
  sitemap: "https://www.babbalkhehra.com/sitemap.xml",

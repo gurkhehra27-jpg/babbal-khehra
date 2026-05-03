@@ -28,7 +28,7 @@ export default function BlogPage() {
 
  return (
  <div className="bg-black min-h-screen">
- {/* ── HEADER ── */}
+ {/* Header */}
  <section className="pt-40 pb-20 px-6 relative overflow-hidden">
  <div className="absolute top-0 right-1/3 w-[500px] h-[350px] bg-[#00e5ff]/4 blur-[120px] rounded-full pointer-events-none" />
  <div className="max-w-6xl mx-auto relative">
@@ -61,7 +61,7 @@ export default function BlogPage() {
 
  <div className="h-px bg-gradient-to-r from-transparent via-[#00e5ff]/20 to-transparent" />
 
- {/* ── FEATURED ── */}
+ {/* Featured */}
  {featured.length > 0 && (
  <section className="py-16 px-6">
  <div className="max-w-6xl mx-auto">
@@ -104,7 +104,7 @@ export default function BlogPage() {
 
  <div className="p-8">
  <p className="text-[#6b6b8a] text-xs font-mono mb-3">
- {post.date} · {post.readTime}
+ {post.date} / {post.readTime}
  </p>
  <h2 className="text-white text-2xl font-light tracking-tight mb-2 group-hover:text-[#00e5ff] transition-colors duration-300">
  {post.title}
@@ -114,7 +114,7 @@ export default function BlogPage() {
  {post.excerpt}
  </p>
  <div className="mt-6 flex items-center gap-2 text-[#00e5ff] text-xs tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
- Read more →
+ Read more
  </div>
  </div>
  </Link>
@@ -125,7 +125,7 @@ export default function BlogPage() {
  </section>
  )}
 
- {/* ── SEARCH + FILTER ── */}
+ {/* Search and filter */}
  <section className="py-8 px-6 sticky top-[73px] z-30 bg-black/90 backdrop-blur-md border-b border-[#1a1a2e]">
  <div className="max-w-6xl mx-auto flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
  {/* Search */}
@@ -150,14 +150,14 @@ export default function BlogPage() {
  onClick={() => setSearch("")}
  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#6b6b8a] hover:text-white transition-colors"
  >
- ✕
+ x
  </button>
  )}
  </div>
 
  {/* Category pills */}
  <div className="flex items-center gap-2 flex-wrap">
- {["All",...categories].map((cat) => (
+ {["All", ...categories].map((cat) => (
  <button
  key={cat}
  onClick={() => setActiveCategory(cat)}
@@ -173,7 +173,7 @@ export default function BlogPage() {
  </div>
  </section>
 
- {/* ── ALL POSTS ── */}
+ {/* All posts */}
  <section className="py-16 px-6 pb-32">
  <div className="max-w-6xl mx-auto">
  <p className="text-[#6b6b8a] text-xs font-mono mb-10">
@@ -220,7 +220,7 @@ export default function BlogPage() {
  <span className="text-[#00e5ff] text-xs tracking-[0.3em] uppercase font-mono opacity-70">
  {post.category}
  </span>
- <span className="text-[#1a1a2e]">·</span>
+ <span className="text-[#1a1a2e]">/</span>
  <span className="text-[#6b6b8a] text-xs font-mono">{post.readTime}</span>
  </div>
  <h3 className="text-white text-xl font-light tracking-tight mb-1 group-hover:text-[#00e5ff] transition-colors duration-300">
@@ -260,7 +260,7 @@ export default function BlogPage() {
  onClick={() => { setSearch(""); setActiveCategory("All"); }}
  className="text-[#00e5ff] text-xs tracking-[0.2em] uppercase hover:text-white transition-colors"
  >
- Clear filters →
+ Clear filters
  </button>
  </motion.div>
  )}
