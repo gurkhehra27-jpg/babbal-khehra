@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme inline {
- --color-background: #000000;
- --color-obsidian: #07070f;
- --color-obsidian-light: #0e0e1a;
- --color-obsidian-border: #1a1a2e;
+ --color-background: #061018;
+ --color-obsidian: #0b1720;
+ --color-obsidian-light: #12222e;
+ --color-obsidian-border: #223646;
  --color-cyan: #00e5ff;
  --color-cyan-dim: #00b8cc;
  --color-cyan-glow: rgba(0, 229, 255, 0.15);
- --color-foreground: #e8e8f0;
- --color-muted: #6b6b8a;
+ --color-foreground: #f2f7fa;
+ --color-muted: #9aa8ba;
  --font-sans: var(--font-geist-sans);
  --font-mono: var(--font-geist-mono);
 }
@@ -23,77 +23,97 @@ html {
 }
 
 body {
- background: #000000;
- color: #e8e8f0;
+ background:
+ radial-gradient(circle at 16% 12%, rgba(42, 172, 193, 0.12), transparent 28%),
+ radial-gradient(circle at 86% 8%, rgba(117, 190, 176, 0.08), transparent 26%),
+ linear-gradient(180deg, #07131b 0%, #061018 42%, #08131a 100%);
+ color: #f2f7fa;
  font-family: var(--font-geist-sans), system-ui, sans-serif;
  --webkit-font-smoothing: antialiased;
  --moz-osx-font-smoothing: grayscale;
  overflow-x: hidden;
 }
 
-/* Scrollbar */
+.bg-black {
+ background-color: #061018 !important;
+}
+
+.bg-\[\#07070f\] {
+ background-color: #0b1720 !important;
+}
+
+.bg-\[\#0e0e1a\] {
+ background-color: #12222e !important;
+}
+
+.border-\[\#1a1a2e\] {
+ border-color: #223646 !important;
+}
+
+.text-\[\#6b6b8a\] {
+ color: #9aa8ba !important;
+}
+
 ::-webkit-scrollbar {
  width: 4px;
 }
+
 ::-webkit-scrollbar-track {
- background: #000;
+ background: #061018;
 }
+
 ::-webkit-scrollbar-thumb {
  background: #00e5ff44;
  border-radius: 2px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
  background: #00e5ffaa;
 }
 
-/* Cyan glow utility */
 .glow-cyan {
- text-shadow: 0 0 20px rgba(0, 229, 255, 0.6), 0 0 60px rgba(0, 229, 255, 0.2);
+ text-shadow: 0 0 16px rgba(103, 240, 255, 0.42), 0 0 44px rgba(127, 217, 194, 0.16);
 }
 
 .glow-box-cyan {
- box-shadow: 0 0 20px rgba(0, 229, 255, 0.15), inset 0 0 20px rgba(0, 229, 255, 0.03);
+ box-shadow: 0 0 18px rgba(0, 229, 255, 0.12), inset 0 0 18px rgba(127, 217, 194, 0.025);
 }
 
 .glow-box-cyan-hover:hover {
- box-shadow: 0 0 40px rgba(0, 229, 255, 0.25), inset 0 0 20px rgba(0, 229, 255, 0.05);
+ box-shadow: 0 0 34px rgba(0, 229, 255, 0.18), inset 0 0 18px rgba(127, 217, 194, 0.045);
 }
 
-/* Star field background — cleared; canvas handles all atmosphere now */
+/* Canvas handles the atmospheric background. */
 .star-bg {}
 
-/* Gradient text */
 .text-gradient-cyan {
- background: linear-gradient(135deg, #00e5ff 0%, #ffffff 50%, #00b8cc 100%);
+ background: linear-gradient(135deg, #67f0ff 0%, #ffffff 46%, #7fd9c2 100%);
  --webkit-background-clip: text;
  --webkit-text-fill-color: transparent;
  background-clip: text;
 }
 
-/* Film grain overlay — SVG fractalNoise, tiled, very low opacity */
 .bg-grain {
  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23grain)'/%3E%3C/svg%3E");
  background-size: 320px 320px;
- opacity: 0.028;
+ opacity: 0.018;
 }
 
-/* Edge vignette — darkens corners, focuses eye toward center */
 .bg-vignette {
  background: radial-gradient(
  ellipse at center,
  transparent 0%,
- transparent 42%,
- rgba(0, 0, 0, 0.28) 72%,
- rgba(0, 0, 0, 0.62) 100%
+ transparent 48%,
+ rgba(0, 0, 0, 0.14) 76%,
+ rgba(0, 0, 0, 0.34) 100%
  );
 }
 
-/* Noise texture overlay */
 .noise-overlay::after {
- content: '';
+ content: "";
  position: absolute;
  inset: 0;
  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
  pointer-events: none;
- opacity: 0.04;
+ opacity: 0.03;
 }

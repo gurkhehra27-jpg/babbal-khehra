@@ -19,9 +19,9 @@ const doubled = [...marqueeQuotes, ...marqueeQuotes];
 
 export default function QuoteMarquee() {
  return (
- <div className="relative py-6 overflow-hidden border-y border-[#1a1a2e] bg-[#07070f]">
- <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#07070f] to-transparent z-10 pointer-events-none" />
- <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#07070f] to-transparent z-10 pointer-events-none" />
+ <div className="relative py-6 overflow-hidden border-y border-[#223646] bg-[#0b1720]/92">
+ <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0b1720] to-transparent z-10 pointer-events-none" />
+ <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0b1720] to-transparent z-10 pointer-events-none" />
 
  <motion.div
  className="flex gap-16 whitespace-nowrap"
@@ -30,7 +30,7 @@ export default function QuoteMarquee() {
  >
  {doubled.map((quote, i) => (
  <span key={i} className="flex items-center flex-shrink-0">
- <span className="text-[#6b6b8a] text-sm font-mono tracking-[0.15em]">{quote}</span>
+ <span className="text-[#afbdc8] text-sm font-mono tracking-[0.12em]">{quote}</span>
  </span>
  ))}
  </motion.div>

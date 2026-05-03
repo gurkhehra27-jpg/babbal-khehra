@@ -38,12 +38,12 @@ export default function HomePage() {
  className="object-cover object-top"
  priority
  />
- {/* Bottom dissolve - text area is pure black */}
- <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.22) 28%, rgba(0,0,0,0.62) 50%, rgba(0,0,0,0.90) 68%, #000000 82%)" }} />
+ {/* Bottom dissolve keeps text readable without crushing the image. */}
+ <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(6,16,24,0.04) 0%, rgba(6,16,24,0.16) 28%, rgba(6,16,24,0.48) 50%, rgba(6,16,24,0.78) 68%, #061018 84%)" }} />
  {/* Left + right edge vignette */}
- <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.45) 0%, transparent 18%, transparent 82%, rgba(0,0,0,0.45) 100%)" }} />
+ <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(6,16,24,0.34) 0%, transparent 18%, transparent 82%, rgba(6,16,24,0.34) 100%)" }} />
  {/* Top darkening - merges with nav */}
- <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 22%)" }} />
+ <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(6,16,24,0.38) 0%, transparent 24%)" }} />
  </motion.div>
 
  {/* Desktop: portrait becomes part of the whole hero plane */}
@@ -70,22 +70,22 @@ export default function HomePage() {
  />
  </div>
  {/* Global dimming keeps the portrait inside the atmosphere */}
- <div className="absolute inset-0 bg-black/26" />
+ <div className="absolute inset-0 bg-[#061018]/18" />
  {/* Soft centre haze replaces the visible vertical band */}
  <div
  className="absolute inset-y-0 right-[34%] w-[34%]"
  style={{
  background:
- "radial-gradient(circle at center, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.10) 28%, transparent 72%)",
+ "radial-gradient(circle at center, rgba(6,16,24,0.16) 0%, rgba(6,16,24,0.07) 28%, transparent 72%)",
  filter: "blur(36px)",
  }}
  />
  {/* Top dissolve merges with the nav and upper background */}
- <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.38) 20%, transparent 46%)" }} />
+ <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(6,16,24,0.66) 0%, rgba(6,16,24,0.26) 20%, transparent 46%)" }} />
  {/* Bottom dissolve deepens the poster effect */}
- <div className="absolute bottom-0 left-0 right-0 h-72 bg-gradient-to-t from-black via-black/70 to-transparent" />
+ <div className="absolute bottom-0 left-0 right-0 h-72 bg-gradient-to-t from-[#061018] via-[#061018]/60 to-transparent" />
  {/* Far-right vignette avoids a cut-off edge at the viewport */}
- <div className="absolute inset-0" style={{ background: "linear-gradient(to left, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.12) 12%, transparent 24%)" }} />
+ <div className="absolute inset-0" style={{ background: "linear-gradient(to left, rgba(6,16,24,0.32) 0%, rgba(6,16,24,0.10) 12%, transparent 24%)" }} />
  </motion.div>
 
  {/* Text - bottom-anchored on mobile, centered on desktop */}

@@ -32,13 +32,13 @@ export default function Navigation() {
  transition={{ duration: 0.7, ease: "easeOut" }}
  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
  scrolled
- ? "bg-black/90 backdrop-blur-md border-b border-[#00e5ff]/10" : "bg-transparent"
+ ? "bg-[#07131b]/88 backdrop-blur-md border-b border-[#67f0ff]/15 shadow-[0_10px_30px_rgba(0,0,0,0.18)]" : "bg-transparent"
  }`}
  >
  <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
  {/* Logo */}
  <Link href="/" className="group flex flex-col leading-none">
- <span className="text-[#00e5ff] text-xs tracking-[0.3em] uppercase font-mono opacity-70 group-hover:opacity-100 transition-opacity">
+ <span className="text-[#67f0ff] text-xs tracking-[0.3em] uppercase font-mono opacity-80 group-hover:opacity-100 transition-opacity">
  Babbal
  </span>
  <span className="text-white text-lg font-semibold tracking-widest uppercase">
@@ -54,15 +54,15 @@ export default function Navigation() {
  href={link.href}
  className={`relative text-sm tracking-[0.2em] uppercase transition-colors duration-300 ${
  pathname === link.href
- ? "text-[#00e5ff]" : "text-[#6b6b8a] hover:text-white"
+ ? "text-[#67f0ff]" : "text-[#9aa8ba] hover:text-white"
  }`}
  >
  {link.label}
  {pathname === link.href && (
  <motion.span
  layoutId="nav-underline"
- className="absolute -bottom-1 left-0 right-0 h-px bg-[#00e5ff]"
- style={{ boxShadow: "0 0 8px #00e5ff" }}
+ className="absolute -bottom-1 left-0 right-0 h-px bg-[#67f0ff]"
+ style={{ boxShadow: "0 0 8px rgba(103, 240, 255, 0.7)" }}
  />
  )}
  </Link>
@@ -77,15 +77,15 @@ export default function Navigation() {
  >
  <motion.span
  animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
- className="block w-6 h-px bg-[#00e5ff]"
+ className="block w-6 h-px bg-[#67f0ff]"
  />
  <motion.span
  animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
- className="block w-6 h-px bg-[#00e5ff]"
+ className="block w-6 h-px bg-[#67f0ff]"
  />
  <motion.span
  animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
- className="block w-6 h-px bg-[#00e5ff]"
+ className="block w-6 h-px bg-[#67f0ff]"
  />
  </button>
  </div>
@@ -99,7 +99,7 @@ export default function Navigation() {
  animate={{ opacity: 1, y: 0 }}
  exit={{ opacity: 0, y: -20 }}
  transition={{ duration: 0.3 }}
- className="fixed inset-0 z-40 bg-black/98 backdrop-blur-xl flex flex-col items-center justify-center gap-10"
+ className="fixed inset-0 z-40 bg-[#07131b]/98 backdrop-blur-xl flex flex-col items-center justify-center gap-10"
  >
  {links.map((link, i) => (
  <motion.div
@@ -112,7 +112,7 @@ export default function Navigation() {
  href={link.href}
  onClick={() => setMenuOpen(false)}
  className={`text-3xl font-light tracking-[0.3em] uppercase transition-colors ${
- pathname === link.href ? "text-[#00e5ff] glow-cyan" : "text-white"
+ pathname === link.href ? "text-[#67f0ff] glow-cyan" : "text-white"
  }`}
  >
  {link.label}
