@@ -10,9 +10,9 @@ const projects = [
  title: "babbalkhehra.com",
  subtitle: "This site as a product",
  description:
- "A full-stack personal brand platform designed and built from scratch. Cinematic hero layout, editorial design system, responsive across all devices, AI-integrated chat, and SEO-structured content architecture.",
+ "My personal site, built as a working home for the books, essays, community work, music, and AI chat.",
  stack: ["Next.js 16", "Tailwind CSS 4", "TypeScript", "Framer Motion", "OpenAI API"],
- outcome: "Live / Optimised / Ongoing",
+ outcome: "Live / Maintained",
  featured: true,
  },
  {
@@ -20,7 +20,7 @@ const projects = [
  num: "02",
  category: "AI / Full-Stack",
  title: "Quantum Seer",
- subtitle: "AI-powered prediction platform",
+ subtitle: "Prediction platform",
  description:
  "Community-driven prediction newsroom with Oracle voting, weekly prediction cycles, SuperAdmin controls, a billboard monetisation system, and retro-futurist design language. Built with a complete Supabase schema, RLS policies, and realtime data.",
  stack: ["Next.js 16", "Supabase", "TypeScript", "Framer Motion"],
@@ -32,9 +32,9 @@ const projects = [
  num: "03",
  category: "AI / Integration",
  title: "AskBabbal",
- subtitle: "AI-powered personal assistant",
+ subtitle: "Personal site assistant",
  description:
- "A Claude-powered AI chat built directly into this site. Responds to questions about Babbal's work, philosophy, approach, and projects. Custom system prompt, edge-deployed, streaming responses.",
+ "A small chat assistant built into this site. It answers questions about the books, essays, projects, and philosophy in plain language.",
  stack: ["OpenAI API", "Next.js API Routes", "TypeScript"],
  outcome: "Live on this site",
  featured: false,
@@ -43,11 +43,11 @@ const projects = [
  id: 4,
  num: "04",
  category: "AI / Content",
- title: "AI Editorial System",
- subtitle: "Scalable content infrastructure",
+ title: "Editorial Workflow",
+ subtitle: "Writing and publishing system",
  description:
- "Claude-powered editorial workflows for producing essays, blog posts, and long-form content at scale. Template-driven, brand-consistent, and built to maintain voice across high output volume.",
- stack: ["Claude API", "Custom Prompts", "Editorial Templates"],
+ "A writing workflow for turning rough notes into clearer essays, blog posts, and project pages without losing the human voice.",
+ stack: ["Research", "Drafting", "Editing"],
  outcome: "Active",
  featured: false,
  },
@@ -56,9 +56,9 @@ const projects = [
  num: "05",
  category: "Community / Strategy",
  title: "Community Visibility",
- subtitle: "Digital strategy for real-world impact",
+ subtitle: "Online presence for offline work",
  description:
- "Digital presence strategy for community and civic engagement. Building the online infrastructure that supports visibility and credibility: social presence, content systems, discoverability, and editorial framing.",
+ "Online presence that supports community and civic work: clear pages, proof, social links, and discoverable writing.",
  stack: ["Digital Strategy", "Content Systems", "SEO", "Social"],
  outcome: "Active",
  featured: false,
@@ -154,7 +154,7 @@ export default function LabPage() {
  transition={{ duration: 0.8, delay: 0.25 }}
  className="text-[#6b6b8a] text-lg max-w-lg leading-relaxed"
  >
- Websites, AI systems, content infrastructure, and digital storytelling, built from scratch and shipped for real.
+ Websites, writing systems, AI tools, and public-facing work that people can actually use.
  </motion.p>
  </div>
  </section>

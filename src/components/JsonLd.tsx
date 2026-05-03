@@ -48,7 +48,7 @@ export function BooksJsonLd() {
  bookFormat: "https://schema.org/Paperback",
  datePublished: "2025",
  description:
- "A visceral journey through the corridors of existence. Alive strips away everything comfortable and asks a single question: when you have nothing left, who are you?",
+ "A story about survival, identity, and what remains when life takes away the version of yourself you were holding onto.",
  genre: ["Philosophy", "Fiction"],
  inLanguage: "en",
  offers: {

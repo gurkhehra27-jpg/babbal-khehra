@@ -9,8 +9,8 @@ const books = [
  title: "Alive",
  subtitle: "A Story of Survival and Awakening",
  description:
- "A visceral journey through the corridors of existence. Alive strips away everything comfortable and asks a single question: when you have nothing left, who are you? A narrative that challenges your relationship with survival, identity, and the will to endure.",
-    genre: "Fiction / Philosophy",
+ "A story about survival, identity, and what remains when life takes away the version of yourself you were holding onto.",
+ genre: "Fiction / Philosophy",
  year: "2025",
  amazonUrl: "https://amzn.asia/d/01UfATi7",
  accent: "#00e5ff",
@@ -26,7 +26,7 @@ const books = [
  subtitle: "The Architecture of the Self",
  description:
  "What if the ego is not your enemy, but your most misunderstood teacher? This book dismantles the war between self and soul, weaving philosophy, psychology, and lived experience into a new framework for understanding consciousness and identity.",
-    genre: "Philosophy / Self-Discovery",
+ genre: "Philosophy / Self-Discovery",
  year: "2025",
  amazonUrl: "https://amzn.asia/d/0bXshqi8",
  accent: "#00b8cc",
@@ -67,7 +67,7 @@ export default function VaultPage() {
  transition={{ duration: 0.8, delay: 0.2 }}
  className="text-[#6b6b8a] text-lg max-w-xl leading-relaxed"
  >
- Two works. Each one a universe. Written to disturb, illuminate, and transform.
+ Two books about identity, survival, ego, and the work of becoming yourself.
  </motion.p>
  </div>
  </section>

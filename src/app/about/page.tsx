@@ -78,7 +78,7 @@ export default function AboutPage() {
  return (
  <div className="bg-black min-h-screen">
 
- {/* -”€-”€ HEADER -”€-”€ */}
+ {/* Header */}
  <section className="pt-40 pb-20 px-6 relative overflow-hidden">
  <div className="absolute top-0 right-1/3 w-[500px] h-[400px] bg-[#00e5ff]/4 blur-[120px] rounded-full pointer-events-none" />
  <div className="max-w-6xl mx-auto relative">
@@ -112,7 +112,7 @@ export default function AboutPage() {
 
  <div className="h-px bg-gradient-to-r from-transparent via-[#00e5ff]/20 to-transparent" />
 
- {/* -”€-”€ MANIFESTO STRIP -”€-”€ */}
+ {/* Manifesto strip */}
  <section className="py-20 px-6 relative overflow-hidden">
  <div className="absolute inset-0 bg-[#07070f]" />
  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[200px] bg-[#00e5ff]/3 blur-[100px] rounded-full pointer-events-none" />
@@ -135,7 +135,7 @@ export default function AboutPage() {
 
  <div className="h-px bg-gradient-to-r from-transparent via-[#00e5ff]/10 to-transparent" />
 
- {/* -”€-”€ BIO - editorial split -”€-”€ */}
+ {/* Bio */}
  <section className="py-24 px-6">
  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[300px_1fr] gap-16">
 
@@ -215,7 +215,7 @@ export default function AboutPage() {
  <p className="text-[#6b6b8a] text-base leading-relaxed">
  My books,{" "}
  <span className="text-[#e8e8f0]">Alive</span> and{" "}
- <span className="text-[#e8e8f0]">Ego & Enlightenment</span>, explore identity, resilience, and what it means to build yourself with intention. My digital work builds platforms, systems, and presence that communicate at scale. My community work closes the loop by showing up in person, in public, and in the conversations that matter.
+ <span className="text-[#e8e8f0]">Ego & Enlightenment</span>, explore identity, resilience, and what it means to build yourself with intention. My digital work gives those ideas a clear home online. My community work keeps it grounded in real people, public spaces, and the conversations that matter.
  </p>
 
  <p className="text-[#e8e8f0] text-base leading-relaxed font-light border-l-2 border-[#00e5ff]/30 pl-5 mt-8">
@@ -225,7 +225,7 @@ export default function AboutPage() {
  </div>
  </section>
 
- {/* -”€-”€ PUBLIC PRESENCE -”€-”€ */}
+ {/* Public presence */}
  <section className="py-24 px-6 relative overflow-hidden">
  <div className="absolute inset-0 bg-[#07070f]" />
  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00e5ff]/15 to-transparent" />
@@ -329,7 +329,7 @@ export default function AboutPage() {
  </div>
  </section>
 
- {/* -”€-”€ WHAT I STAND FOR -”€-”€ */}
+ {/* What I stand for */}
  <section className="py-24 px-6">
  <div className="max-w-6xl mx-auto">
  <motion.div
@@ -432,7 +432,7 @@ export default function AboutPage() {
  </div>
  </section>
 
- {/* -”€-”€ TIMELINE -”€-”€ */}
+ {/* Timeline */}
  <section className="py-24 px-6 relative overflow-hidden">
  <div className="absolute inset-0 bg-[#07070f]" />
  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00e5ff]/15 to-transparent" />
@@ -445,7 +445,7 @@ export default function AboutPage() {
  className="mb-16"
  >
  <p className="text-[#00e5ff] text-[11px] tracking-[0.5em] uppercase font-mono mb-3 opacity-60">
- The Journey
+ The Path So Far
  </p>
  <h2 className="text-white text-4xl font-light tracking-tight">Milestones</h2>
  </motion.div>
@@ -480,7 +480,7 @@ export default function AboutPage() {
  </div>
  </section>
 
- {/* -”€-”€ CTA -”€-”€ */}
+ {/* CTA */}
  <section className="py-24 px-6 relative overflow-hidden">
  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#00e5ff]/3 blur-[100px] rounded-full pointer-events-none" />
 
@@ -506,7 +506,7 @@ export default function AboutPage() {
  href="/lab"
  className="inline-flex items-center gap-3 px-8 py-4 border border-[#00e5ff]/40 text-[#00e5ff] text-sm tracking-[0.2em] uppercase hover:bg-[#00e5ff]/10 transition-all duration-300 glow-box-cyan"
  >
- The Lab -†’
+ The Lab
  </Link>
  <Link
  href="/vault"
